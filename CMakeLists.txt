@@ -3,4 +3,4 @@ project(P_O_P_Main_Project C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(P_O_P_Main_Project main.c load_config.c game_console.h load_map.c)
+add_executable(P_O_P_Main_Project main.c load_configs.c game_console.h load_map.c load_settings.c)
