@@ -17,8 +17,8 @@ void load_map(FILE *map_file){
     i = 0;
     while((c = getc(map_file)) != EOF){
         if(c != '\n'){
-           game_map[i][j] = c;
-           j++;
+            game_map[i][j] = c;
+            j++;
         }
         else {
             i++;
