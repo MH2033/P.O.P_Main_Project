@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game_console.h"
+#include "../game_console.h"
 
 char solidblock, deathblock, moveblock, wall, target, object;
 char up, down, left, right, character, Exit;
@@ -16,9 +16,11 @@ int load_config(char *map, char *game){
     game_file = fopen(game, "r");
     if(game_file == NULL || map_file == NULL)
         return 1;
-    load_map(map_file);
+    if(load_map(map_file))
+        return 1;
     fclose(map_file);
-    load_settings(game_file);
+    if(load_settings(game_file))
+        return 1;
     fclose(game_file);
     return 0;
 }

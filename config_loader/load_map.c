@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "game_console.h"
+#include "../game_console.h"
 
 char **game_map;
-void load_map(FILE *map_file){
+int load_map(FILE *map_file){
     struct dimension map_size = {0, 0};
     int c, i = 0, j = 0;
     while((c = getc(map_file)) != 'x')
@@ -21,8 +21,14 @@ void load_map(FILE *map_file){
             j++;
         }
         else {
+            if(j != map_size.x)
+                return 1;
             i++;
             j = 0;
         }
     }
+    if(i != map_size.y - 1){
+        return 1;
+    }
+    return 0;
 }

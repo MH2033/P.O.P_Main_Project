@@ -23,7 +23,7 @@ struct dimension{
 };
 
 int load_config(char*, char*);
-void load_map(FILE *);
-void load_settings(FILE *);
+int load_map(FILE *);
+int load_settings(FILE *);
 
 #endif

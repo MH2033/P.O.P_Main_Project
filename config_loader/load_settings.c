@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game_console.h"
+#include "../game_console.h"
 #define NUM_CONFIGS 18
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
@@ -11,8 +11,8 @@ extern struct rpoint point;
 extern struct opponent opp;
 extern struct put dblock;
 
-void load_settings(FILE *game_file){
-    int c, i = 0, j = 0;
+int load_settings(FILE *game_file){
+    int c, i = 0, j = 0, wrong_file;
     char **content, *lines;
     char *p1;
     const char exps[NUM_CONFIGS][15] = {"solidblock=", "deathblock=",
@@ -40,8 +40,10 @@ void load_settings(FILE *game_file){
     content[i] = NULL;
     i = 0;
     while(content[i] != NULL){
+        wrong_file = 1;
         for(j = 0; j < NUM_CONFIGS; j++){
             if((p1 = strstr(content[i], exps[j])) != NULL){
+                wrong_file = 0;
                 switch(j){
                     case 0:
                         solidblock = *(p1 + strlen(exps[j]));
@@ -132,6 +134,8 @@ void load_settings(FILE *game_file){
                 }
             }
         }
+        if(wrong_file)
+            return 1;
         i++;
     }
     i = 0;
@@ -140,4 +144,5 @@ void load_settings(FILE *game_file){
         i++;
     }
     free(content);
+    return 0;
 }
