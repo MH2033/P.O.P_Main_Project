@@ -6,7 +6,7 @@
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;
-extern int time, raindb, attack;
+extern int time_limit, raindb, attack;
 extern struct rpoint point;
 extern struct opponent opp;
 extern struct put dblock;
@@ -19,7 +19,7 @@ int load_settings(FILE *game_file){
                                         "moveblock=","wall=", "target=",
                                         "object=", "up=", "down=",
                                         "left=","right=", "character=",
-                                        "Exit=","time=", "opp=",
+                                        "Exit=","time_limit=", "opp=",
                                         "raindb=", "attack=", "rpoint=",
                                         "put="};
     lines = (char *)malloc(sizeof(char) * 100);
@@ -84,7 +84,7 @@ int load_settings(FILE *game_file){
                     case 12:
                         p1 += strlen(exps[j]);
                         while(*p1 != 0) {
-                            time = time * 10 + *p1 - '0';
+                            time_limit = time_limit * 10 + *p1 - '0';
                             p1++;
                         }
                         break;

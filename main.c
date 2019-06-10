@@ -5,5 +5,7 @@ int main(int argc, char *argv[]) {
         printf("Error: Wrong settings");
         return 0;
     }
+    initialization();
+    print_map();
     return 0;
 }

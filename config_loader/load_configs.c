@@ -5,7 +5,7 @@
 
 char solidblock, deathblock, moveblock, wall, target, object;
 char up, down, left, right, character, Exit;
-int time, raindb, attack;
+int time_limit, raindb, attack;
 struct rpoint point = {0, 0, 0};
 struct opponent opp = {0, 0};
 struct put dblock = {0, 0, 0};

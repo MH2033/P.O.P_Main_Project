@@ -3,8 +3,9 @@
 #include "../game_console.h"
 
 char **game_map;
+struct dimension map_size = {0, 0};
+
 int load_map(FILE *map_file){
-    struct dimension map_size = {0, 0};
     int c, i = 0, j = 0;
     while((c = getc(map_file)) != 'x')
         map_size.x = map_size.x * 10 + c - '0';

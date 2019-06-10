@@ -25,5 +25,9 @@ struct dimension{
 int load_config(char*, char*);
 int load_map(FILE *);
 int load_settings(FILE *);
+void random_gen(int n,char b);
+void initialization();
+void print_map();
+void hidecursor();
 
 #endif
