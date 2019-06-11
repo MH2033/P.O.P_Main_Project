@@ -1,5 +1,8 @@
 #ifndef P_O_P_MAIN_PROJECT_GAME_CONSOLE_H
 #define P_O_P_MAIN_PROJECT_GAME_CONSOLE_H
+
+#include <stdio.h>
+
 struct rpoint{
     char symbol;
     int score;

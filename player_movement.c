@@ -7,7 +7,6 @@ extern int time_limit, raindb, attack;
 extern struct rpoint point;
 extern struct opponent opp;
 extern struct put dblock;
-extern int TX[2],TY[2];
 extern char **game_map;
 
 void move_up(int x ,int y,char obj,int score[],int i){
@@ -25,22 +24,9 @@ void move_up(int x ,int y,char obj,int score[],int i){
         else if (game_map[x - 1][y] == 5) {
             score[i] += 5;
             game_map[x - 1][y] = ' ';
-            rand1(1,5);
+            //rand1(1,5);
             game_map[x][y] = ' ';
             game_map[x - 1][y] = obj;
-        }else if(game_map[x - 1][y] == 6){
-            game_map [x - 1][y] = ' ';
-            game_map [x][y] = ' ';
-            for (int j = 0; j < 2; j++) {
-                if(game_map[TX[j]][TY[j]] == 6){
-                    game_map[TX[j]][TY[j]] = ' ';
-                    x = TX[j];
-                    y = TY[j];
-                    rand1(2,6);
-                }
-            }
-            game_map[x][y] = ' ';
-            game_map[x][y] = obj;
         }
     }
 }
@@ -59,22 +45,9 @@ void move_down(int x ,int y,char obj,int score[],int i){
         else if (game_map[x + 1][y] == 5) {
             score[i] += 5;
             game_map[x + 1][y] = ' ';
-            rand1(1,5);
+            //rand1(1,5);
             game_map[x][y] = ' ';
             game_map[x + 1][y] = obj;
-        }else if(game_map[x + 1][y] == 6){
-            game_map [x + 1][y] = ' ';
-            game_map [x][y] = ' ';
-            for (int j = 0; j < 2; j++) {
-                if(game_map[TX[j]][TY[j]] == 6){
-                    game_map[TX[j]][TY[j]] = ' ';
-                    x = TX[j];
-                    y = TY[j];
-                }
-            }
-            rand1(2,6);
-            game_map[x][y] = ' ';
-            game_map[x][y] = obj;
         }
     }
 }
@@ -93,22 +66,9 @@ void move_right(int x ,int y,char obj, int score[],int i) {
         else if (game_map[x][y +1]== 5) {
             score[i] += 5;
             game_map[x][y +1] = ' ';
-            rand1(1,5);
+            //rand1(1,5);
             game_map[x][y] = ' ';
             game_map[x][y +1] = obj;
-        }else if(game_map[x][y + 1] == 6){
-            game_map [x][y + 1] = ' ';
-            game_map [x][y] = ' ';
-            for (int j = 0; j < 2; j++) {
-                if(game_map[TX[j]][TY[j]] == 6){
-                    game_map[TX[j]][TY[j]] = ' ';
-                    x = TX[j];
-                    y = TY[j];
-                    rand1(2,6);
-                }
-            }
-            game_map[x][y] = ' ';
-            game_map[x][y] = obj;
         }
     }
 }
@@ -127,22 +87,9 @@ void move_left(int x ,int y,char obj,int score[],int i) {
         else if (game_map[x][y -1]== 5) {
             score[i] += 5;
             game_map[x][y -1] = ' ';
-            rand1(1,5);
+            //rand1(1,5);
             game_map[x][y] = ' ';
             game_map[x][y -1] = obj;
-        }else if(game_map[x][y -1] == 6){
-            game_map [x][y -1 ] = ' ';
-            game_map [x][y] = ' ';
-            for (int j = 0; j < 2; j++) {
-                if(game_map[TX[j]][TY[j]] == 6){
-                    game_map[TX[j]][TY[j]] = ' ';
-                    x = TX[j];
-                    y = TY[j];
-                    rand1(2,6);
-                }
-            }
-            game_map[x][y] = 0;
-            game_map[x][y] = obj;
         }
     }
 }
