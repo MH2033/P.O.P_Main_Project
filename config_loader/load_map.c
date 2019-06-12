@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include "../game_console.h"
 
+extern char character;
 char **game_map;
 struct dimension map_size = {0, 0};
+struct dimension player_pos;
 
 int load_map(FILE *map_file){
     int c, i = 0, j = 0;
@@ -17,6 +19,10 @@ int load_map(FILE *map_file){
     }
     i = 0;
     while((c = getc(map_file)) != EOF){
+        if(c == character){
+            player_pos.y = i;
+            player_pos.x = j;
+        }
         if(c != '\n'){
             game_map[i][j] = c;
             j++;

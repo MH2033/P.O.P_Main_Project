@@ -19,11 +19,11 @@ int load_config(char *directory){
     game_file = fopen(game, "r");
     if(game_file == NULL || map_file == NULL)
         return 1;
-    if(load_map(map_file))
-        return 1;
-    fclose(map_file);
     if(load_settings(game_file))
         return 1;
     fclose(game_file);
+    if(load_map(map_file))
+        return 1;
+    fclose(map_file);
     return 0;
 }
