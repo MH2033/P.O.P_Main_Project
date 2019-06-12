@@ -21,13 +21,18 @@ struct dimension{
     int x;
     int y;
 };
+struct file_name{
+    char *file;
+    struct file_name* next;
+};
 
-int load_config(char*, char*);
+int load_config(char *);
 int load_map(FILE *);
 int load_settings(FILE *);
 void random_gen(int n,char b);
 void initialization();
 void print_map();
 void hidecursor();
+char *What_in_it(void);
 
 #endif

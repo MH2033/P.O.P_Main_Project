@@ -9,9 +9,12 @@ int time_limit, raindb, attack;
 struct rpoint point = {0, 0, 0};
 struct opponent opp = {0, 0};
 struct put dblock = {0, 0, 0};
-
-int load_config(char *map, char *game){
+char map[100] = "\\map";
+char game[100] = "\\game";
+int load_config(char *directory){
     FILE *map_file, *game_file;
+    strcat(directory,map);
+    strcat(directory,game);
     map_file = fopen(map, "r");
     game_file = fopen(game, "r");
     if(game_file == NULL || map_file == NULL)
