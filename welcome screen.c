@@ -39,7 +39,7 @@ char* What_in_it(void){
     struct dirent * dn;
     int count = 0;
     struct file_name* head = NULL;
-    DIR *dirct = opendir(".");
+    DIR *dirct = opendir("game file");
     while ((dn = (readdir(dirct)) )!= NULL){
         if ( count > 1 )
             head = add_file(head , dn->d_name);
@@ -47,7 +47,7 @@ char* What_in_it(void){
     }
     closedir(dirct);
     print_file_name(head , 1);
-    printf("==========================================");
+    printf("==========================================\n");
     printf("Plese Enter The Number Of The File That You Want To Open :");
     scanf("%s", id);
     return findpass(head,atoi(id));

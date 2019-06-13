@@ -36,6 +36,7 @@ void random_gen(int n,char b);
 void initialization();
 void print_map();
 void hidecursor();
+void cd(char *dir);
 char *What_in_it(void);
 
 #endif

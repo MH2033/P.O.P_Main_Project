@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.13)
 project(P_O_P_Main_Project C)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 
-add_executable(P_O_P_Main_Project main.c config_loader/load_configs.c game_console.h config_loader/load_map.c config_loader/load_settings.c random_gen.c initialization.c print_map.c hide_cursor.c player_movement.c)
+include_directories(.)
+
 add_executable(P_O_P_Main_Project
         config_loader/load_configs.c
         config_loader/load_map.c
@@ -12,5 +13,7 @@ add_executable(P_O_P_Main_Project
         hide_cursor.c
         initialization.c
         main.c
+        player_movement.c
         print_map.c
-        random_gen.c "welcome screen.c")
+        random_gen.c
+        "welcome screen.c" cd.c)
