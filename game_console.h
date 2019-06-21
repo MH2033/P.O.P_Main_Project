@@ -34,9 +34,16 @@ int load_map(FILE *);
 int load_settings(FILE *);
 void random_gen(int n,char b);
 void initialization();
+void move_up(int x ,int y,char obj,int score[],int i);
+void move_down(int x ,int y,char obj,int score[],int i);
+void move_right(int x ,int y,char obj, int score[],int i);
+void move_left(int x ,int y,char obj,int score[],int i);
+void move_player(char c);
 void print_map();
 void hidecursor();
 void cd(char *dir);
+void run_game();
+void delay(int number_of_seconds);
 char *What_in_it(void);
 
 #endif

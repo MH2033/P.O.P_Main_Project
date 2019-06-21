@@ -13,7 +13,7 @@ add_executable(P_O_P_Main_Project
         hide_cursor.c
         initialization.c
         main.c
-        player_movement.c
+        movement/player_movement.c
         print_map.c
         random_gen.c
-        "welcome screen.c" cd.c)
+        "welcome screen.c" cd.c run_game.c delay.c movement/move_player.c)

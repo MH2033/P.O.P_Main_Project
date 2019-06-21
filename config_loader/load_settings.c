@@ -19,7 +19,7 @@ int load_settings(FILE *game_file){
                                         "moveblock=","wall=", "target=",
                                         "object=", "up=", "down=",
                                         "left=","right=", "character=",
-                                        "Exit=","time_limit=", "opp=",
+                                        "Exit=","time=", "opp=",
                                         "raindb=", "attack=", "rpoint=",
                                         "put="};
     lines = (char *)malloc(sizeof(char) * 100);

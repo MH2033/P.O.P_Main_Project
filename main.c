@@ -6,6 +6,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     initialization();
-    print_map();
+    run_game();
     return 0;
 }
