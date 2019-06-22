@@ -3,6 +3,7 @@ project(P_O_P_Main_Project C)
 
 set(CMAKE_C_STANDARD 11)
 
+set(CMAKE_C_FLAGS "-pthread")
 include_directories(.)
 
 add_executable(P_O_P_Main_Project

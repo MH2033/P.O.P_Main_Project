@@ -15,8 +15,8 @@ void random_gen(int n,char b){
     while(counter1 < n){
         ran_x = (rand() % (map_size.x - 2)) + 1;
         ran_y = (rand() % (map_size.y - 2)) + 1;
-        if (game_map[ran_x][ran_y] == ' ') {
-            game_map[ran_x][ran_y] = b;
+        if (game_map[ran_y][ran_x] == ' ') {
+            game_map[ran_y][ran_x] = b;
             counter1++;
         }
         else {
