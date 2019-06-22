@@ -10,10 +10,10 @@ add_executable(P_O_P_Main_Project
         config_loader/load_map.c
         config_loader/load_settings.c
         game_console.h
-        hide_cursor.c
+        core_functions/hide_cursor.c
         initialization.c
         main.c
         movement/player_movement.c
         print_map.c
         random_gen.c
-        "welcome screen.c" cd.c run_game.c delay.c movement/move_player.c)
+        "welcome screen.c" core_functions/cd.c run_game.c core_functions/delay.c movement/move_player.c)
