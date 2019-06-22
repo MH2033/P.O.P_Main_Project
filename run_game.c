@@ -12,26 +12,18 @@ extern struct put dblock;
 extern char **game_map;
 extern struct dimension player_pos;
 
-void run_game(){
+void run_game() {
     char c = 0;
-    if(time_limit) {
-        while (c != Exit && time_limit > 0) {
-            system("cls");
-            if (kbhit())
-                c = getch();
-            move_player(c);
-            print_map();
-            delay(200);
-        }
-    }
-    else{
-        while (c != Exit) {
-            system("cls");
-            if (kbhit())
-                c = getch();
-            move_player(c);
-            print_map();
-            delay(200);
-        }
+    float t_limit;
+    t_limit = time_limit + 0.001;
+    while (c != Exit && t_limit > 0) {
+        system("cls");
+        if (kbhit())
+            c = getch();
+        move_player(c);
+        print_map();
+        delay(200);
+        if(time_limit)
+            t_limit -= 0.2;
     }
 }
