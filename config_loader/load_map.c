@@ -17,9 +17,9 @@ int load_map(FILE *map_file){
         map_size.x = map_size.x * 10 + c - '0';
     while((c = getc(map_file)) != '\n')
         map_size.y = map_size.y * 10 + c - '0';
-    game_map = (char **)malloc(sizeof(char *) * map_size.x);
-    for(i = 0; i < map_size.x; i++){
-        game_map[i] = (char *)malloc(sizeof(char) * map_size.y);
+    game_map = (char **)malloc(sizeof(char *) * map_size.y);
+    for(i = 0; i < map_size.y; i++){
+        game_map[i] = (char *)malloc(sizeof(char) * map_size.x);
     }
     i = 0;
     while((c = getc(map_file)) != EOF){
