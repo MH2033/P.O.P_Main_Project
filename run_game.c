@@ -11,6 +11,7 @@ extern struct opponent opp;
 extern struct put dblock;
 extern char **game_map;
 extern struct dimension player_pos;
+extern struct opp_list *head_op;
 
 void run_game() {
     char c = 0, move_key = 0;
@@ -31,6 +32,7 @@ void run_game() {
             put_dblock(player_last_pos);
             c = 0;
         }
+        move_computer(&(head_op -> pos));
         print_map();
         delay(200);
         if(time_limit)
