@@ -10,5 +10,4 @@ void move_computer(struct dimension *op){
     else if (FindCloseFood(*op) == left)
         move_left(op,opp.rival,score,1);
     else if (FindCloseFood(*op) == right)
-        move_right(op,opp.rival,score,1);
-}
+        move_right(op,opp.rival,score,1); }
