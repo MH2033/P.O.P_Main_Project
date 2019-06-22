@@ -6,9 +6,13 @@ extern char character;
 char **game_map;
 struct dimension map_size = {0, 0};
 struct dimension player_pos;
+extern struct opponent opp;
+struct opp_list *head_op;
 
 int load_map(FILE *map_file){
     int c, i = 0, j = 0;
+    struct opp_list *temp;
+    head_op = NULL;
     while((c = getc(map_file)) != 'x')
         map_size.x = map_size.x * 10 + c - '0';
     while((c = getc(map_file)) != '\n')
@@ -19,6 +23,13 @@ int load_map(FILE *map_file){
     }
     i = 0;
     while((c = getc(map_file)) != EOF){
+        if(c == opp.rival){
+            temp = (struct opp_list *)malloc(sizeof(struct opp_list));
+            temp -> pos.y = i;
+            temp -> pos.x = j;
+            temp -> next = head_op;
+            head_op = temp;
+        }
         if(c == character){
             player_pos.y = i;
             player_pos.x = j;

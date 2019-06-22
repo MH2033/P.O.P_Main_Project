@@ -29,6 +29,11 @@ struct file_name{
     struct file_name* next;
 };
 
+struct opp_list{
+    struct dimension pos;
+    struct opp_list *next;
+};
+
 int load_config(char *);
 int load_map(FILE *);
 int load_settings(FILE *);
