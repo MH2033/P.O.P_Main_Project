@@ -24,7 +24,7 @@ void move_up(int x ,int y,char obj,int score[],int i) {
                 game_map[y][x] = ' ';
                 game_map[y - 1][x] = obj;
                 player_pos.y = y - 1;
-            } else if (game_map[y - 1][x] == deathblock) {
+            } else if (game_map[y - 1][x] == deathblock || game_map) {
                 //game_over();
             }
         }

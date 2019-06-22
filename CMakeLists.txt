@@ -16,4 +16,4 @@ add_executable(P_O_P_Main_Project
         movement/player_movement.c
         print_map.c
         random_gen.c
-        "welcome screen.c" core_functions/cd.c run_game.c core_functions/delay.c movement/move_player.c)
+        "welcome screen.c" core_functions/cd.c run_game.c core_functions/delay.c movement/move_player.c put_dblock.c)

@@ -43,6 +43,7 @@ void print_map();
 void hidecursor();
 void cd(char *dir);
 void run_game();
+void put_dblock(struct dimension);
 void delay(int number_of_seconds);
 char *What_in_it(void);
 
