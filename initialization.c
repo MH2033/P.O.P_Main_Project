@@ -9,7 +9,6 @@ extern int time_limit, raindb, attack;
 extern struct rpoint point;
 extern struct opponent opp;
 extern struct put dblock;
-
 int randomness;
 
 void initialization(){

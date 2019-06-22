@@ -79,8 +79,8 @@ int load_settings(FILE *game_file){
                          character = *(p1 + strlen(exps[j]));
                          break;
                     case 11:
-                         Exit = *(p1 + strlen(exps[j]));
-                         break;
+                        Exit = *(p1 + strlen(exps[j]));
+                        break;
                     case 12:
                         p1 += strlen(exps[j]);
                         while(*p1 != 0) {

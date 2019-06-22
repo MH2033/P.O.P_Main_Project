@@ -51,5 +51,7 @@ void run_game();
 void put_dblock(struct dimension);
 void delay(int number_of_seconds);
 char *What_in_it(void);
+int A_I(int i,int j,struct dimension op);
+int FindCloseFood(struct dimension op);
 
 #endif

@@ -9,11 +9,18 @@ add_executable(P_O_P_Main_Project
         config_loader/load_configs.c
         config_loader/load_map.c
         config_loader/load_settings.c
-        game_console.h
+        core_functions/cd.c
+        core_functions/delay.c
         core_functions/hide_cursor.c
+        movement/move_player.c
+        movement/player_movement.c
+        game_console.h
         initialization.c
         main.c
-        movement/player_movement.c
+        moveco.c
         print_map.c
+        put_dblock.c
         random_gen.c
-        "welcome screen.c" core_functions/cd.c run_game.c core_functions/delay.c movement/move_player.c put_dblock.c)
+        run_game.c
+        "welcome screen.c" movement/move_comp.c
+        FindCloseFood.c)
