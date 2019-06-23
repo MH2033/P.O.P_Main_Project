@@ -16,7 +16,8 @@ extern struct dimension player_pos;
 extern struct opp_list *head_op;
 
 void run_game() {
-    char c = 0, move_key = 0, i;
+    char c = 0, move_key = 0;
+    register int i;
     struct dimension player_last_pos;
     struct opp_list *temp;
     pthread_t thread[100];

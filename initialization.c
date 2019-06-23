@@ -15,7 +15,7 @@ extern char **buffer;
 int randomness;
 
 void initialization(){
-    int i, j;
+    register int i, j;
     hidecursor();
     randomness = time(0);
     if(point.symbol)

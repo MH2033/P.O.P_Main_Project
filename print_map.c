@@ -14,7 +14,7 @@ extern int global_counter;
 extern int c2,flagx_i,flagx_k,flagy_l,flagy_j;
 struct opp_list *head_op;
 void print_map(){
-    int i, j;
+    register int i, j;
     COORD pos;
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     for(i = 0; i < map_size.y; i++){
