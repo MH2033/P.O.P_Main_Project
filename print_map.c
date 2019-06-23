@@ -31,7 +31,7 @@ void print_map(){
     if (point.symbol != 0){
         printf("\nYOUR SCORE IS : %d",score[0]);
         if(opp.dest == point.symbol){
-            for(int i = 1; i < 2; i++)
+            for(i = 1; i < 2; i++)
                 printf("\nA\\I %d score: %d",i,score[i]);
         }
     }
