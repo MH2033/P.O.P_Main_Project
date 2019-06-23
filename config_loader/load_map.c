@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../game_console.h"
-
+int global_counter = 0;
 extern char character;
 char **game_map;
 struct dimension map_size = {0, 0};
@@ -29,6 +29,7 @@ int load_map(FILE *map_file){
             temp -> pos.x = j;
             temp -> next = head_op;
             head_op = temp;
+            global_counter++;
         }
         if(c == character){
             player_pos.y = i;

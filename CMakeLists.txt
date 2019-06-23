@@ -18,10 +18,9 @@ add_executable(P_O_P_Main_Project
         game_console.h
         initialization.c
         main.c
-        moveco.c
         print_map.c
         put_dblock.c
         random_gen.c
         run_game.c
         "welcome screen.c" movement/move_comp.c
-        FindCloseFood.c)
+        FindCloseFood.c END_GAME.c A_I.c)

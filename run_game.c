@@ -13,12 +13,11 @@ extern struct put dblock;
 extern char **game_map;
 extern struct dimension player_pos;
 extern struct opp_list *head_op;
-
+float t_limit;
 void run_game() {
-    char c = 0, move_key = 0, i;
+    char c = 0, move_key = 0;
     struct dimension player_last_pos;
     struct opp_list *temp;
-    float t_limit;
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
     while (c != Exit && t_limit > 0) {
@@ -35,18 +34,7 @@ void run_game() {
             put_dblock(player_last_pos);
             c = 0;
         }
-        i = 0;
-        temp = head_op;
-        while(temp != NULL){
-            pthread_create(&thread[i], NULL, move_computer, &(temp -> pos));
-            temp = temp -> next;
-            i++;
-        }
-        //move_computer(&(head_op -> pos));
-        //move_computer(&(head_op -> next -> pos));
-        //move_computer(&(head_op -> next -> next -> pos));
-        //pthread_join(thread[i], NULL);
-        i = 0;
+        move_computer(&(head_op -> pos));
         print_map();
         delay(200);
         if(time_limit)
