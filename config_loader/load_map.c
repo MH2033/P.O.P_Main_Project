@@ -4,6 +4,7 @@
 int global_counter = 0;
 extern char character;
 char **game_map;
+char **buffer;
 struct dimension map_size = {0, 0};
 struct dimension player_pos;
 extern struct opponent opp;
@@ -18,8 +19,10 @@ int load_map(FILE *map_file){
     while((c = getc(map_file)) != '\n')
         map_size.y = map_size.y * 10 + c - '0';
     game_map = (char **)malloc(sizeof(char *) * map_size.y);
+    buffer = (char **)malloc(sizeof(char *) * map_size.y);
     for(i = 0; i < map_size.y; i++){
         game_map[i] = (char *)malloc(sizeof(char) * map_size.x);
+        buffer[i] = (char *)malloc(sizeof(char) * map_size.x);
     }
     i = 0;
     while((c = getc(map_file)) != EOF){

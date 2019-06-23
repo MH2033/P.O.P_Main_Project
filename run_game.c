@@ -22,7 +22,7 @@ void run_game() {
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
     while (c != Exit && t_limit > 0) {
-        system("cls");
+        //system("cls");
         if (kbhit()) {
             c = getch();
             if(c == up || c == down || c == right || c == left)
@@ -45,8 +45,10 @@ void run_game() {
         //move_computer(&(head_op -> pos));
         //move_computer(&(head_op -> next -> pos));
         //move_computer(&(head_op -> next -> next -> pos));
-        pthread_join(thread[i], NULL);
-        i = 0;
+        while(i > 0) {
+            pthread_join(thread[i], NULL);
+            i--;
+        }
         print_map();
         delay(200);
         if(time_limit)
