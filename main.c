@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "game_console.h"
 int main(int argc, char *argv[]) {
     if(load_config(What_in_it())) {
@@ -7,5 +8,5 @@ int main(int argc, char *argv[]) {
     }
     initialization();
     run_game();
-    return 0;
+    _Exit(0);
 }
