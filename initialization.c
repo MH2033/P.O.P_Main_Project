@@ -16,7 +16,10 @@ int randomness;
 
 void initialization(){
     register int i, j;
+    char arg[100];
+    sprintf(arg, "MODE %d,%d", map_size.x+1, map_size.y+1);
     hidecursor();
+    system(arg);
     randomness = time(0);
     if(point.symbol)
         random_gen(point.num, point.symbol);
