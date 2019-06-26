@@ -3,7 +3,7 @@ project(P_O_P_Main_Project C)
 
 set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_C_FLAGS "-pthread -O3")
+set(CMAKE_C_FLAGS "-pthread -lpdcurses -O3")
 include_directories(.)
 
 add_executable(P_O_P_Main_Project
@@ -24,3 +24,5 @@ add_executable(P_O_P_Main_Project
         run_game.c
         "welcome screen.c" movement/move_comp.c
         FindCloseFood.c END_GAME.c A_I.c)
+
+target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/pdcurses.a)

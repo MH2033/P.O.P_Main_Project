@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <curses.h>
 #include "game_console.h"
 int main(int argc, char *argv[]) {
     if(load_config(What_in_it())) {
