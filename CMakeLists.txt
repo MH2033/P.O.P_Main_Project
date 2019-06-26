@@ -12,7 +12,6 @@ add_executable(P_O_P_Main_Project
         config_loader/load_settings.c
         core_functions/cd.c
         core_functions/delay.c
-        core_functions/hide_cursor.c
         movement/move_player.c
         movement/player_movement.c
         game_console.h
