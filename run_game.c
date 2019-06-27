@@ -2,6 +2,7 @@
 #include <pthread.h>
 #include <curses.h>
 #include <string.h>
+#include "core_functions/bass.h"
 #include "game_console.h"
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
@@ -24,6 +25,7 @@ void run_game() {
     char mesg1[] = "Paused";
     char mesg2[] =  "Press any key to continue";
     struct dimension win_size;
+    HSTREAM stream = BASS_StreamCreateFile(FALSE,"movement.mp3", 0, 0, 0);
     win_size.x = 2*map_size.x/3;
     win_size.y = map_size.y/3+1;
     WINDOW *win = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
@@ -42,14 +44,14 @@ void run_game() {
                 mvwprintw(win, 2,(win_size.x-strlen(mesg2))/2,"%s",mesg2);
                 wrefresh(win);
                 c = getch();
-
-                //mvwaddnstr(win,)
                 endwin();
                 clear();
                 refresh();
             }
-            if(c == up || c == down || c == right || c == left)
+            if(c == up || c == down || c == right || c == left) {
                 move_key = c;
+                BASS_ChannelPlay(stream, FALSE);
+            }
         }
         player_last_pos.y = player_pos.y;
         player_last_pos.x = player_pos.x;

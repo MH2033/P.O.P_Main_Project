@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <curses.h>
 #include "game_console.h"
+#include "core_functions/bass.h"
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;
@@ -15,11 +14,9 @@ extern char **game_map;
 int randomness;
 
 void initialization(){
-    char arg[100];
-    sprintf(arg, "MODE %d,%d", map_size.x+1, map_size.y);
     //Terminal initializations
-        system(arg);
         initscr();
+        resize_term(map_size.y, map_size.x+1);
         start_color();
         use_default_colors();
         curs_set(0);
@@ -27,6 +24,9 @@ void initialization(){
         noecho();
         clear();
     //
+    //Sound initialization
+        BASS_Init(-1, 44100, 0, 0, NULL);
+        BASS_SetVolume(0.4);
     randomness = time(0);
     if(point.symbol)
         random_gen(point.num, point.symbol);
