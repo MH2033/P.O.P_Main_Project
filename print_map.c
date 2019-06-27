@@ -17,8 +17,8 @@ void print_map(){
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     init_pair(2, COLOR_GREEN, COLOR_BLACK);
     init_pair(3, COLOR_RED, COLOR_BLACK);
-    init_pair(4, COLOR_BLUE, COLOR_BLACK);
-    init_pair(5, COLOR_CYAN, COLOR_BLACK);
+    init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(5, COLOR_BLUE, COLOR_BLACK);
     for(i = 0; i < map_size.y; i++){
         for(j = 0; j < map_size.x; j++) {
             if(game_map[i][j] == opp.rival) {
@@ -27,9 +27,9 @@ void print_map(){
                 attroff(COLOR_PAIR(3));
             }
             else if(game_map[i][j] == character){
-                attron(COLOR_PAIR(2));
+                attron(COLOR_PAIR(1));
                 mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(2));
+                attroff(COLOR_PAIR(1));
             }
             else if(game_map[i][j] == deathblock){
                 attron(COLOR_PAIR(3));
@@ -39,12 +39,12 @@ void print_map(){
             else if(game_map[i][j] == solidblock || game_map[i][j] == wall){
                 attron(COLOR_PAIR(5));
                 mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(4));
+                attroff(COLOR_PAIR(5));
             }
             else if(game_map[i][j] == point.symbol){
-                attron(COLOR_PAIR(1));
+                attron(COLOR_PAIR(4));
                 mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(1));
+                attroff(COLOR_PAIR(4));
             }
             else{
                 mvaddch(i, j, game_map[i][j]);

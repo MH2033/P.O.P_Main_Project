@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <conio.h>
 #include <pthread.h>
+#include <curses.h>
+#include <string.h>
 #include "game_console.h"
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
@@ -13,6 +13,7 @@ extern struct opponent opp;
 extern struct put dblock;
 extern char **game_map;
 extern struct dimension player_pos;
+extern struct dimension map_size;
 extern struct opp_list *head_op;
 
 void run_game() {
@@ -20,12 +21,33 @@ void run_game() {
     register int i;
     struct dimension player_last_pos;
     struct opp_list *temp;
+    char mesg1[] = "Paused";
+    char mesg2[] =  "Press any key to continue";
+    struct dimension win_size;
+    win_size.x = 2*map_size.x/3;
+    win_size.y = map_size.y/3+1;
+    WINDOW *win = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
     while (c != Exit && t_limit > 0) {
-        //system("cls");
         if (kbhit()) {
             c = getch();
+            if(c == '\e'){
+                box(win, ' ', ' ');
+                mvwhline(win, 0,0,'!',win_size.x);
+                mvwhline(win, win_size.y-1,0,'!',win_size.x);
+                mvwvline(win,0, 0, '!', win_size.y);
+                mvwvline(win,0, win_size.x-1, '!', win_size.y);
+                mvwprintw(win, 1,(win_size.x-strlen(mesg1))/2,"%s",mesg1);
+                mvwprintw(win, 2,(win_size.x-strlen(mesg2))/2,"%s",mesg2);
+                wrefresh(win);
+                c = getch();
+
+                //mvwaddnstr(win,)
+                endwin();
+                clear();
+                refresh();
+            }
             if(c == up || c == down || c == right || c == left)
                 move_key = c;
         }
