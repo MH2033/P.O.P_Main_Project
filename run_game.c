@@ -36,6 +36,8 @@ void run_game() {
                 BASS_ChannelPlay(move, FALSE);
             }
         }
+        player_last_pos.y = player_pos.y;
+        player_last_pos.x = player_pos.x;
         move_player(move_key);
         if(c == dblock.key) {
             put_dblock(player_last_pos);
