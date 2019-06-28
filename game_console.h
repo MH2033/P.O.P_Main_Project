@@ -54,5 +54,6 @@ char *What_in_it(void);
 int A_I(int i,int j,struct dimension op);
 int FindCloseFood(struct dimension op);
 void *move_computer(void *);
+void show_start_window();
 
 #endif
