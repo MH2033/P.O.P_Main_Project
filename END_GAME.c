@@ -1,6 +1,6 @@
 #include "game_console.h"
-#include <curses.h>
 #include <windows.h>
+#include <dirnet>
 extern struct rpoint point;
 extern int global_counter;
 extern int score[];
@@ -12,7 +12,7 @@ void game_over(void){
     c = Exit;
     printw("\t\t\tGAME OVER");
     if (point.symbol != 0){
-        printw("\nYOUR SCORE IS : %d",score[0]);
+        printf("\tYOUR SCORE IS : %d",score[0]);
         if(opp.dest == point.symbol){
             for(int i = 1; i < global_counter; i++)
             printw("\nA\\I %d score: %d",i,score[i]);
@@ -22,8 +22,8 @@ void game_over(void){
     refresh();
     getchar();
     getchar();
-    cd("..");
-    cd("..");
+    chdir("..");
+    chdir("..");
 }
 void win(void){
     system("cls");

@@ -23,8 +23,8 @@ void move_up(struct dimension *pos, char obj, int score[], int i) {
                 game_map[pos->y][pos->x] = ' ';
                 game_map[pos->y - 1][pos->x] = obj;
                 pos->y = pos->y - 1;
-            } else if (game_map[pos->y - 1][pos->x] == deathblock || game_map) {
-                //game_over();
+            } else if (game_map[pos->y - 1][pos->x] == deathblock) {
+                game_over();
             }
         }
     } else if (obj == opp.rival) {
@@ -41,7 +41,7 @@ void move_up(struct dimension *pos, char obj, int score[], int i) {
                     game_map[pos->y][pos->x] = ' ';
                     game_map[pos->y - 1][pos->x] = obj;
                     pos->y = pos->y - 1;
-                } else if (game_map[pos->y - 1][pos->x] == deathblock || game_map) {
+                } else if (game_map[pos->y - 1][pos->x] == deathblock) {
                     //game_over();
                 }
             }
@@ -63,7 +63,7 @@ void move_down(struct dimension *pos,char obj,int score[],int i) {
                 game_map[pos->y + 1][pos->x] = obj;
                 pos->y = pos->y + 1;
             } else if (game_map[pos->y + 1][pos->x] == deathblock) {
-                //game_over();
+                game_over();
             }
         }
     } else if (obj == opp.rival) {
@@ -82,7 +82,7 @@ void move_down(struct dimension *pos,char obj,int score[],int i) {
                         game_map[pos->y + 1][pos->x] = obj;
                         pos->y = pos->y + 1;
                     } else if (game_map[pos->y + 1][pos->x] == deathblock) {
- //                       game_over();
+                        //game_over();
                     }
                 }
             }
@@ -104,7 +104,7 @@ void move_right(struct dimension *pos,char obj, int score[],int i) {
                 game_map[pos->y][pos->x + 1] = obj;
                 pos->x = pos->x + 1;
             } else if (game_map[pos->y][pos->x + 1] == deathblock) {
-  //              game_over();
+                game_over();
             }
         }
     } else if (obj == opp.rival) {
@@ -123,7 +123,7 @@ void move_right(struct dimension *pos,char obj, int score[],int i) {
                         game_map[pos->y][pos->x + 1] = obj;
                         pos->x = pos->x + 1;
                     } else if (game_map[pos->y][pos->x + 1] == deathblock) {
-    //                    game_over();
+                        //game_over();
                     }
                 }
             }
@@ -145,7 +145,7 @@ void move_left(struct dimension *pos, char obj,int score[],int i) {
                 game_map[pos->y][pos->x - 1] = obj;
                 pos->x = pos->x - 1;
             } else if (game_map[pos->y][pos->x - 1] == deathblock) {
-      //          game_over();
+                game_over();
             }
         }
     } else if (obj == opp.rival) {
@@ -164,7 +164,7 @@ void move_left(struct dimension *pos, char obj,int score[],int i) {
                         game_map[pos->y][pos->x - 1] = obj;
                         pos->x = pos->x - 1;
                     } else if (game_map[pos->y][pos->x - 1] == deathblock) {
-        //                game_over();
+                        //game_over();
                     }
                 }
             }

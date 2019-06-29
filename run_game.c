@@ -26,16 +26,22 @@ void run_game() {
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
+    print_map();
     show_start_window();
     int flag = 0;
     while (c != Exit && t_limit > 0) {
         if (kbhit()) {
             c = getch();
-//            if(c == '\e')
-//                show_pause_window();
-            if(c == up || c == down || c == right || c == left) {
-                move_key = c;
-                BASS_ChannelPlay(move, FALSE);
+            if(c == '\e')
+                show_pause_window();
+            else if(c == up || c == down || c == right || c == left) {
+                if(c != move_key) {
+                    move_key = c;
+                    BASS_ChannelPlay(move, FALSE);
+                }
+            }
+            else if(c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT){
+                //attack(c);
             }
         }
         player_last_pos.y = player_pos.y;
@@ -64,4 +70,8 @@ void run_game() {
         if(time_limit)
             t_limit -= 0.2;
     }
+
+    chdir("..");
+    chdir("..");
+    endwin();
 }

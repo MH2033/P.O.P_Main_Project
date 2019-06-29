@@ -8,6 +8,7 @@ struct rpoint{
     int score;
     int num;
 };
+
 struct opponent{
     char rival;
     char dest;
@@ -40,7 +41,6 @@ struct opp_list{
     struct dimension pos;
     struct opp_list *next;
 };
-void game_over(void);
 void rain_db(void);
 int load_config(char *);
 int load_map(FILE *);
@@ -64,6 +64,7 @@ int FindCloseFood(struct dimension op);
 void *move_computer(void *);
 void show_start_window();
 void show_pause_window();
+void game_over();
 void move_db(raindbd *);
 void debug_output(int i, int j);
 
