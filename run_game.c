@@ -4,6 +4,7 @@
 #include <string.h>
 #include "core_functions/bass.h"
 #include "game_console.h"
+#include <dirent.h>
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;
@@ -65,4 +66,8 @@ void run_game() {
         if(time_limit)
             t_limit -= 0.2;
     }
+
+    chdir("..");
+    chdir("..");
+    endwin();
 }

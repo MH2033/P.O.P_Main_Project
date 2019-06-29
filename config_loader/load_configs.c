@@ -16,14 +16,16 @@ int load_config(char *directory){
     cd(directory);
     map_file = fopen(map, "r");
     game_file = fopen(game, "r");
+    //printf("\n%s", map);
+    //printf("\n%s", game);
     if(game_file == NULL || map_file == NULL) {
         return 1;
     }
     if(load_settings(game_file))
-        return 1;
+        return 2;
     fclose(game_file);
     if(load_map(map_file))
-        return 1;
+        return 3;
     fclose(map_file);
     return 0;
 }
