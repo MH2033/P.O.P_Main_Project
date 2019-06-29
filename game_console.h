@@ -56,5 +56,6 @@ int FindCloseFood(struct dimension op);
 void *move_computer(void *);
 void show_start_window();
 void show_pause_window();
+void game_over();
 
 #endif

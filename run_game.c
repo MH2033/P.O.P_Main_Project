@@ -16,24 +16,30 @@ extern char **game_map;
 extern struct dimension player_pos;
 extern struct dimension map_size;
 extern struct opp_list *head_op;
-
+int c = 0;
 void run_game() {
-    char c = 0, move_key = 0;
+    int move_key = 0;
     register int i;
     struct dimension player_last_pos;
     struct opp_list *temp;
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
+    print_map();
     show_start_window();
     while (c != Exit && t_limit > 0) {
         if (kbhit()) {
             c = getch();
             if(c == '\e')
                 show_pause_window();
-            if(c == up || c == down || c == right || c == left) {
-                move_key = c;
-                BASS_ChannelPlay(move, FALSE);
+            else if(c == up || c == down || c == right || c == left) {
+                if(c != move_key) {
+                    move_key = c;
+                    BASS_ChannelPlay(move, FALSE);
+                }
+            }
+            else if(c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT){
+                //attack(c);
             }
         }
         player_last_pos.y = player_pos.y;
