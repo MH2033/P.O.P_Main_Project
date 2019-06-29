@@ -67,7 +67,6 @@ void show_pause_window();
 void game_over();
 void move_db(db *);
 void debug_output(int i, int j);
-
-void clean_up();
+void cleanup();
 
 #endif
