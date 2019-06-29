@@ -24,6 +24,14 @@ struct dimension{
     int x;
     int y;
 };
+typedef struct raindbd{
+    struct dimension head;
+    struct raindbd *next;
+}raindbd;
+typedef struct db{
+    raindbd *head;
+    struct db *next;
+}db;
 struct file_name{
     char *file;
     struct file_name* next;
@@ -57,5 +65,8 @@ void *move_computer(void *);
 void show_start_window();
 void show_pause_window();
 void game_over();
+void move_db(db *);
+void debug_output(int i, int j);
+
 
 #endif
