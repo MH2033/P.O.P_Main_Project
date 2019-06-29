@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
         }
         initialization();
         run_game();
+        cleanup();
     }
     _Exit(0);
 }

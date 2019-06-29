@@ -57,5 +57,6 @@ void *move_computer(void *);
 void show_start_window();
 void show_pause_window();
 void game_over();
+void cleanup();
 
 #endif
