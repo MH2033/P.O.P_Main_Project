@@ -2,6 +2,7 @@
 #include <pthread.h>
 #include <curses.h>
 #include <string.h>
+#include <dirent.h>
 #include "core_functions/bass.h"
 #include "game_console.h"
 #include <dirent.h>

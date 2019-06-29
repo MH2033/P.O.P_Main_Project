@@ -1,6 +1,7 @@
 #include "game_console.h"
 #include <windows.h>
-#include <dirnet>
+#include <dirent.h>
+#include <curses.h>
 extern struct rpoint point;
 extern int global_counter;
 extern int score[];
@@ -22,8 +23,6 @@ void game_over(void){
     refresh();
     getchar();
     getchar();
-    chdir("..");
-    chdir("..");
 }
 void win(void){
     system("cls");
