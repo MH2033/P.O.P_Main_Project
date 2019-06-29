@@ -68,5 +68,6 @@ void game_over();
 void move_db(db *);
 void debug_output(int i, int j);
 void cleanup();
+void att(int direction);
 
 #endif

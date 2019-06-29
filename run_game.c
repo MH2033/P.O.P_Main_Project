@@ -20,6 +20,8 @@ extern struct dimension map_size;
 extern struct opp_list *head_op;
 int c = 0;
 void run_game() {
+    keypad(stdscr, TRUE);
+    c = 0;
     int move_key = 0;
     register int i;
     struct dimension player_last_pos;
@@ -41,14 +43,15 @@ void run_game() {
                 }
             }
             else if(c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT){
-                //attack(c);
+                att(c);
             }
         }
         player_last_pos.y = player_pos.y;
         player_last_pos.x = player_pos.x;
         move_player(move_key);
         if(c == dblock.key) {
-            put_dblock(player_last_pos);
+            if(player_last_pos.y != player_pos.y || player_last_pos.x != player_pos.x)
+                put_dblock(player_last_pos);
             c = 0;
         }
         i = 0;
@@ -63,7 +66,7 @@ void run_game() {
             i--;
         }
         print_map();
-        delay(200);
+        delay(100);
         if(time_limit)
             t_limit -= 0.2;
     }

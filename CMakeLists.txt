@@ -3,7 +3,7 @@ project(P_O_P_Main_Project C)
 
 set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_C_FLAGS "-pthread -lpdcurses -O3")
+set(CMAKE_C_FLAGS "-pthread -lpdcurses")
 include_directories(.)
 
 add_executable(P_O_P_Main_Project
@@ -25,7 +25,7 @@ add_executable(P_O_P_Main_Project
         FindCloseFood.c END_GAME.c A_I.c show_start_window.c show_pause_window.c
         raindeath.c
         debug.c
-        core_functions/cleanup.c)
+        core_functions/cleanup.c attack.c)
 
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/pdcurses.a)
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/bass.lib)
