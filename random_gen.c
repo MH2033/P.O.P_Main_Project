@@ -53,7 +53,6 @@ void random_gen(int n,char b){
                 srand(randomness);
                 randomness++;
             }
-            counter1++;
         }
     }else {
         while (counter1<n){
@@ -66,7 +65,6 @@ void random_gen(int n,char b){
                 srand(randomness);
                 randomness++;
             }
-            counter1++;
         }
     }
 }
