@@ -4,6 +4,7 @@
 #include <string.h>
 #include "core_functions/bass.h"
 #include "game_console.h"
+db* head;
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;
@@ -16,9 +17,9 @@ extern char **game_map;
 extern struct dimension player_pos;
 extern struct dimension map_size;
 extern struct opp_list *head_op;
-
+char c = 0;
 void run_game() {
-    char c = 0, move_key = 0;
+    char  move_key = 0;
     register int i;
     struct dimension player_last_pos;
     struct opp_list *temp;
@@ -26,11 +27,12 @@ void run_game() {
     pthread_t thread[100];
     t_limit = time_limit + 0.001;
     show_start_window();
+    int flag = 0;
     while (c != Exit && t_limit > 0) {
         if (kbhit()) {
             c = getch();
-            if(c == '\e')
-                show_pause_window();
+//            if(c == '\e')
+//                show_pause_window();
             if(c == up || c == down || c == right || c == left) {
                 move_key = c;
                 BASS_ChannelPlay(move, FALSE);
@@ -54,6 +56,9 @@ void run_game() {
             pthread_join(thread[i], NULL);
             i--;
         }
+        if (flag == 0)
+            rain_db();
+        flag = 0;
         print_map();
         delay(200);
         if(time_limit)
