@@ -23,8 +23,6 @@ void game_over(void){
     refresh();
     getchar();
     getchar();
-    chdir("..");
-    chdir("..");
 }
 void win(void){
     system("cls");
