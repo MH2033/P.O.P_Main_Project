@@ -22,7 +22,7 @@ add_executable(P_O_P_Main_Project
         random_gen.c
         run_game.c
         "welcome screen.c" movement/move_comp.c
-        FindCloseFood.c END_GAME.c A_I.c show_start_window.c show_pause_window.c core_functions/cleanup.c)
+        FindCloseFood.c END_GAME.c A_I.c show_start_window.c show_pause_window.c)
 
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/pdcurses.a)
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/bass.lib)

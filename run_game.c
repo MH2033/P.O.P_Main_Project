@@ -19,7 +19,6 @@ extern struct dimension map_size;
 extern struct opp_list *head_op;
 int c = 0;
 void run_game() {
-    c = 0;
     int move_key = 0;
     register int i;
     struct dimension player_last_pos;
@@ -67,6 +66,7 @@ void run_game() {
         if(time_limit)
             t_limit -= 0.2;
     }
+
     chdir("..");
     chdir("..");
     endwin();
