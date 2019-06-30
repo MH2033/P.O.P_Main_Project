@@ -25,13 +25,17 @@ void game_over(void){
     getchar();
 }
 void win(void){
-    system("cls");
-    printf("\t\t\tYOU WIN THE GAME");
+    clear();
+    printw("\tYOU WIN THE GAME");
     if (point.symbol != 0){
-        printf("\nYOUR SCORE IS : %d",score[0]);
+        printw("\nYOUR SCORE IS : %d",score[0]);
         if(opp.dest == point.symbol){
             for(int i = 1; i < global_counter; i++)
-                printf("\nA\\I %d score: %d",i,score[i]);
+                printw("\nA\\I %d score: %d",i,score[i]);
         }
     }
+    refresh();
+    printw("\nplease enter key to continue...");
+    getch();
+    getch();
 }

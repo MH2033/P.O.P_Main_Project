@@ -19,8 +19,21 @@ raindbd* del_di(raindbd * head,int x, int y){
         return head;
     }
 }
-void del(raindbd * head){
-
+db * del(db * head){
+    if (head == NULL)
+        return head;
+    if(head->head == NULL){
+        db* temp = head;
+        if(head->next!= NULL)
+            head = head->next;
+        else
+            head = NULL;
+        free(temp);
+        return head;
+    }else{
+        head->next = del(head->next);
+        return head;
+    }
 }
 raindbd *move_rain(raindbd * head){
     if (head == NULL)
@@ -54,6 +67,7 @@ db* move_db(db * head){
         raindbd*temp = move_rain(head->head);
         head->head = temp;
         head->next = move_db(head->next);
+        head = del(head);
         return head;
     }
 }
@@ -85,16 +99,14 @@ void rain_db(void){
     if (raindb == 0){
         return;
     }
-    raindbd* temp1 =(raindbd *)malloc(sizeof(raindbd));
+    raindbd* temp1;
     temp1 =NULL;
     int counter = 0;
-    if(1) {
-        while (counter != raindb) {
-            counter++;
-            random_gen(1, deathblock);
-            temp1 = add_rain(temp1, rain_x, rain_y);
-        }
-        head = add_db(head, temp1);
+    while (counter != raindb) {
+        counter++;
+        random_gen(1, deathblock);
+        temp1 = add_rain(temp1, rain_x, rain_y);
     }
+    head = add_db(head, temp1);
     head = move_db(head);
 }

@@ -22,7 +22,10 @@ void random_gen(int n,char b){
                 counter1++;
             } else {
                 srand(randomness);
-                randomness++;
+                if(randomness == RAND_MAX)
+                    randomness = time(0)%100;
+                else
+                    randomness++;
             }
         }
         return;
@@ -35,7 +38,10 @@ void random_gen(int n,char b){
                 counter1++;
             } else {
                 srand(randomness);
-                randomness++;
+                if(randomness == RAND_MAX)
+                    randomness = time(0)%100;
+                else
+                    randomness++;
             }
         }
     }
