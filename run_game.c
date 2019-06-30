@@ -35,7 +35,6 @@ void run_game() {
         player_last_pos.x = player_pos.x;
         move_player(move_key);
         if (c == '\e') {
-            //pthread_cancel(keyboard_thread);
             show_pause_window();
             pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
         }

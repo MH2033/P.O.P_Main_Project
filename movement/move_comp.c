@@ -1,11 +1,9 @@
 #include "game_console.h"
-#include <pthread.h>
 extern char up,down,left,right;
 extern struct opponent opp;
 extern int score[2];
 int flagx_k ,flagy_j ,flagy_l ,flagx_i;
 char flag_last;
-extern pthread_mutex_t lock;
 void *move_computer(void *op){
     if (flagx_i == 1)
         flag_last = down;

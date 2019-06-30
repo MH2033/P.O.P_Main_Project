@@ -27,7 +27,7 @@ void initialization(){
     //
     //Sound initialization
         BASS_Init(-1, 44100, 0, 0, NULL);
-        BASS_SetVolume(0.3);
+        //BASS_SetVolume(0.3);
     randomness = time(0);
     if(point.symbol)
         random_gen(point.num, point.symbol);

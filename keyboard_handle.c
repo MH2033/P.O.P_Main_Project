@@ -7,6 +7,8 @@ extern int c, move_key;
 extern char up, down, left, right, character, Exit;
 void *keyboard_handle(void *temp){
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
+    if(c == Exit)
+        pthread_exit(0);
     while(1) {
         if (kbhit()) {
             c = getch();
