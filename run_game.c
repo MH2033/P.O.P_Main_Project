@@ -58,7 +58,7 @@ void run_game() {
         }
         rain_db();
         print_map();
-        delay(150);
+        delay(200);
         if(time_limit)
             t_limit -= 0.2;
     }

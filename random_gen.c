@@ -10,8 +10,8 @@ extern char **game_map;
 extern int rain_x,rain_y;
 void random_gen(int n,char b){
     int counter1 = 0,ran_x,ran_y;
-    srand(randomness);
     randomness++;
+    srand(randomness);
     if (deathblock == b) {
         ran_x = (rand() % (map_size.x - 2)) + 1;
         while (counter1<n) {
