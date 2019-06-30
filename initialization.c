@@ -16,13 +16,14 @@ int randomness;
 void initialization(){
     //Terminal initializations
         initscr();
-        resize_term(map_size.y, map_size.x+1);
+        resize_term(map_size.y+2, map_size.x+1);
         start_color();
         use_default_colors();
         curs_set(0);
         cbreak();
         noecho();
         clear();
+        keypad(stdscr, TRUE);
     //
     //Sound initialization
         BASS_Init(-1, 44100, 0, 0, NULL);

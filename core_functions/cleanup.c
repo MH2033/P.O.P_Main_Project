@@ -2,6 +2,7 @@
 #include "game_console.h"
 extern char character;
 extern char **game_map;
+extern int score[2];
 extern struct dimension map_size;
 extern struct dimension player_pos;
 extern struct opponent opp;
@@ -47,4 +48,6 @@ void cleanup(){
     left = 0;
     right = 0;
     solidblock = 0;
+    score[0] = 0;
+    score[1] = 0;
 }

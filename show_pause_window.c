@@ -1,6 +1,7 @@
 #include <curses.h>
 #include "core_functions/bass.h"
 #include "game_console.h"
+extern int c;
 extern struct dimension map_size;
 void show_pause_window(){
     struct dimension win_size;
@@ -18,6 +19,7 @@ void show_pause_window(){
     mvwprintw(pause_win, 2,(win_size.x-strlen(mesg2))/2,"%s",mesg2);
     wrefresh(pause_win);
     getch();
+    c = 0;
     endwin();
     clear();
     refresh();

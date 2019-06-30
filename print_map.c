@@ -51,5 +51,9 @@ void print_map(){
             }
         }
     }
+    if(point.symbol)
+        mvprintw(map_size.y+1, 0, "Score: %d", score[0]);
+    if(time_limit)
+        mvprintw(map_size.y+2, 0, "Remaining time: %0.2f", t_limit);
     refresh();
 }

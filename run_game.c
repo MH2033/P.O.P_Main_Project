@@ -19,36 +19,26 @@ extern struct dimension player_pos;
 extern struct dimension map_size;
 extern struct opp_list *head_op;
 int c = 0;
+int move_key = 0;
 void run_game() {
-    keypad(stdscr, TRUE);
     c = 0;
-    int move_key = 0;
     register int i;
     struct dimension player_last_pos;
     struct opp_list *temp;
-    HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
-    pthread_t thread[100];
+    pthread_t thread[100], keyboard_thread;
     t_limit = time_limit + 0.001;
     print_map();
     show_start_window();
+    pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
     while (c != Exit && t_limit > 0) {
-        if (kbhit()) {
-            c = getch();
-            if(c == '\e')
-                show_pause_window();
-            else if(c == up || c == down || c == right || c == left) {
-                if(c != move_key) {
-                    move_key = c;
-                    BASS_ChannelPlay(move, FALSE);
-                }
-            }
-            else if(c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT){
-                att(c);
-            }
-        }
         player_last_pos.y = player_pos.y;
         player_last_pos.x = player_pos.x;
         move_player(move_key);
+        if (c == '\e') {
+            //pthread_cancel(keyboard_thread);
+            show_pause_window();
+            pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
+        }
         if(c == dblock.key) {
             if(player_last_pos.y != player_pos.y || player_last_pos.x != player_pos.x)
                 put_dblock(player_last_pos);
@@ -66,11 +56,11 @@ void run_game() {
             i--;
         }
         print_map();
-        delay(100);
+        delay(150);
         if(time_limit)
             t_limit -= 0.2;
     }
-
+    pthread_join(keyboard_thread, NULL);
     chdir("..");
     chdir("..");
     endwin();
