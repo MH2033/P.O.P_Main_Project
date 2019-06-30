@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <curses.h>
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
@@ -8,7 +8,7 @@ void print_file_name(struct file_name * head,int counter){
     if (head == NULL){
         return;
     }
-    printf("%d )%s\n",counter,head->file,counter);
+    printw("%d )%s\n",counter,head->file,counter);
     counter ++;
     print_file_name(head->next, counter);
 }
@@ -47,8 +47,8 @@ char* What_in_it(void){
     }
     closedir(dirct);
     print_file_name(head , 1);
-    printf("==========================================\n");
-    printf("Plese Enter The Number Of The File That You Want To Open :");
-    scanf("%s", id);
+    printw("==========================================\n");
+    printw("Plese Enter The Number Of The File That You Want To Open :");
+    scanw("%s", id);
     return findpass(head,atoi(id));
 }

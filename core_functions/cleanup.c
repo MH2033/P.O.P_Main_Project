@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <curses.h>
 #include "game_console.h"
 extern char character;
 extern char **game_map;
@@ -12,6 +13,7 @@ extern char up, down, left, right, Exit;
 extern int time_limit, raindb, attack;
 extern struct rpoint point;
 extern struct put dblock;
+extern struct dimension default_term_size;
 void cleanup(){
     int i, j;
     for(i = 0; i < map_size.y; i++){
@@ -24,6 +26,12 @@ void cleanup(){
         free(head_op);
         head_op = temp;
     }
+    //Terminal restoration
+        resize_term(default_term_size.y, default_term_size.x);
+        curs_set(1);
+        nocbreak();
+        echo();
+    //
     map_size.x = 0;
     map_size.y = 0;
     point.symbol = 0;

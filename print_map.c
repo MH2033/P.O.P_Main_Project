@@ -12,6 +12,7 @@ extern int time_limit;
 extern int global_counter;
 extern char character, deathblock, solidblock, wall;
 extern int c2,flagx_i,flagx_k,flagy_l,flagy_j;
+extern WINDOW *game_window;
 void print_map(){
     register int i, j;
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
@@ -22,38 +23,39 @@ void print_map(){
     for(i = 0; i < map_size.y; i++){
         for(j = 0; j < map_size.x; j++) {
             if(game_map[i][j] == opp.rival) {
-                attron(COLOR_PAIR(3));
-                mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(3));
+                wattron(game_window, COLOR_PAIR(3));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(3));
             }
             else if(game_map[i][j] == character){
-                attron(COLOR_PAIR(1));
-                mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(1));
+                wattron(game_window, COLOR_PAIR(1));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(1));
             }
             else if(game_map[i][j] == deathblock){
-                attron(COLOR_PAIR(3));
-                mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(3));
+                wattron(game_window, COLOR_PAIR(3));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(3));
             }
             else if(game_map[i][j] == solidblock || game_map[i][j] == wall){
-                attron(COLOR_PAIR(5));
-                mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(5));
+                wattron(game_window, COLOR_PAIR(5));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(5));
             }
             else if(game_map[i][j] == point.symbol){
-                attron(COLOR_PAIR(4));
-                mvaddch(i, j, game_map[i][j]);
-                attroff(COLOR_PAIR(4));
+                wattron(game_window, COLOR_PAIR(4));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(4));
             }
             else{
-                mvaddch(i, j, game_map[i][j]);
+                mvwaddch(game_window, i, j, game_map[i][j]);
             }
         }
     }
     if(point.symbol)
-        mvprintw(map_size.y+1, 0, "Score: %d", score[0]);
+        mvwprintw(game_window, map_size.y+1, 0, "Score: %d", score[0]);
     if(time_limit)
-        mvprintw(map_size.y+2, 0, "Remaining time: %0.2f", t_limit);
+        mvwprintw(game_window, map_size.y+2, 0, "Remaining time: %0.2f", t_limit);
+    wrefresh(game_window);
     refresh();
 }

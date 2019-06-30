@@ -5,6 +5,7 @@
 #include "core_functions/bass.h"
 extern int c, move_key;
 extern char up, down, left, right, character, Exit;
+extern WINDOW *game_window;
 void *keyboard_handle(void *temp){
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
     if(c == Exit)
@@ -23,7 +24,7 @@ void *keyboard_handle(void *temp){
             } else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT) {
                 att(c);
             }
-            refresh();
+            wrefresh(game_window);
         }
     }
     pthread_exit(NULL);

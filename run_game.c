@@ -20,6 +20,7 @@ extern struct dimension map_size;
 extern struct opp_list *head_op;
 int c = 0;
 int move_key = 0;
+extern WINDOW *game_window;
 void run_game() {
     c = 0;
     register int i;
@@ -29,6 +30,7 @@ void run_game() {
     t_limit = time_limit + 0.001;
     print_map();
     show_start_window();
+    print_map();
     pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
     while (c != Exit && t_limit > 0) {
         player_last_pos.y = player_pos.y;
@@ -65,5 +67,5 @@ void run_game() {
     pthread_join(keyboard_thread, NULL);
     chdir("..");
     chdir("..");
-    endwin();
+    delwin(game_window);
 }

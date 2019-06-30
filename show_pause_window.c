@@ -4,6 +4,7 @@
 extern int c;
 extern char Exit;
 extern struct dimension map_size;
+extern WINDOW *game_window;
 void show_pause_window(){
     struct dimension win_size;
     static float volume;
@@ -75,7 +76,5 @@ void show_pause_window(){
     }
     wrefresh(pause_win);
     delwin(pause_win);
-    endwin();
-    clear();
-    refresh();
+    werase(game_window);
 }
