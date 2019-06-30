@@ -3,49 +3,98 @@
 extern char deathblock,**game_map;
 extern char object;
 extern int raindb;
-db *head = NULL;
+int rain_x,rain_y;
+extern char character;
+extern struct opponent opp;
 extern struct dimension map_size;
-static raindbd* pre;
-void del_di(raindbd * head){
-    if (head == NULL)
-        return;
-    if (head->next ==NULL){
+raindbd* del_di(raindbd * head,int x, int y){
+    if(head == NULL)
+        return head;
+    if (head->head.y == y || head->head.x== x){
+        raindbd* temp = head->next;
         free(head);
-        pre->next = NULL;
-        return;
+        return temp;
+    }else{
+        head->next = del_di(head->next,x,y);
+        return head;
     }
-    pre->next = head->next;
-    free(head);
-    head = NULL;
 }
 void del(raindbd * head){
 
 }
-void move_db(db * head){
-    raindbd * temp = head->head;
-    if (temp == NULL)
-        return;
-    int x = temp->head.x,y = temp->head.y;
-    while(temp != NULL) {
+raindbd *move_rain(raindbd * head){
+    if (head == NULL)
+        return head;
+    else{
+        int x = head->head.x;
+        int y = head->head.y;
         if (game_map[y + 1][x] == ' ' || game_map[y + 1][x] == object) {
             game_map[y][x] = ' ';
-            game_map[y+1][x] = deathblock;
-            temp->head.y++;
-            temp = temp->next;
-            pre = temp;
-        }else{
+            game_map[y + 1][x] = deathblock;
+            head->head.y++;
+            head->head.x = x;
+        }else {
+            if(game_map[y+1][x] == character)
+                game_over();
+            else if(game_map[y+1][x] == opp.rival){
+                game_map[y+1][x] = ' ';
+            }
             game_map[y][x] = ' ';
-            debug_output(temp->head.y,temp->head.x);
-            //del_di(temp);
-            head->head = NULL;
+            head = del_di(head, x, y);
         }
+        if(head != NULL)
+            head->next = move_rain(head->next);
+        return head;
+    }
+}
+db* move_db(db * head){
+    if(head == NULL){
+        return head;
+    }else{
+        raindbd*temp = move_rain(head->head);
+        head->head = temp;
+        head->next = move_db(head->next);
+        return head;
+    }
+}
+db * add_db(db * head,raindbd * head2){
+    if(head == NULL){
+        db *temp = (db*)malloc(sizeof(db));
+        temp->next = NULL;
+        temp->head = head2;
+        return temp;
+    }else{
+        head->next = add_db(head->next,head2);
+        return head;
+    }
+}
+raindbd *add_rain (raindbd* head,int x, int y){
+    if (head == NULL){
+        raindbd* temp = (raindbd *)malloc(sizeof(raindbd));
+        temp->head.x = x;
+        temp->head.y = y;
+        temp->next = NULL;
+        return temp;
+    }else {
+        head ->next = add_rain(head->next,x,y);
+        return head;
     }
 }
 void rain_db(void){
+    static db* head = NULL;
     if (raindb == 0){
         return;
     }
-    if (head == NULL)
-        random_gen(raindb,deathblock);
-    move_db(head);
+    raindbd* temp1 =(raindbd *)malloc(sizeof(raindbd));
+    temp1 =NULL;
+    int counter = 0;
+    if(1) {
+        while (counter != raindb) {
+            counter++;
+            random_gen(1, deathblock);
+            temp1 = add_rain(temp1, rain_x, rain_y);
+        }
+        head = add_db(head, temp1);
+    }
+    head = move_db(head);
 }

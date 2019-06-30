@@ -54,6 +54,7 @@ void run_game() {
             pthread_join(thread[i], NULL);
             i--;
         }
+        rain_db();
         print_map();
         delay(150);
         if(time_limit)
