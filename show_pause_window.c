@@ -12,8 +12,10 @@ void show_pause_window(){
     win_size.y = map_size.y/3+1;
     WINDOW *pause_win = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
     box(pause_win, 0, 0);
-    mvwprintw(pause_win, 1,(win_size.x-strlen(mesg[0]))/2,"%s",mesg[0]);
-    int ch = 0, i = 0, j;
+    wattron(pause_win, COLOR_PAIR(1));
+    mvwprintw(pause_win, 0,(win_size.x-strlen(mesg[0]))/2,"%s",mesg[0]);
+    wattroff(pause_win, COLOR_PAIR(1));
+    int ch = 0, i = 0;
     for(i=1; i<4; i++ ) {
         if(i == 1)
             wattron(pause_win, A_STANDOUT);
@@ -54,6 +56,9 @@ void show_pause_window(){
                 wmove(pause_win, 3, 0);
                 wclrtoeol(pause_win);
                 box(pause_win, 0, 0);
+                wattron(pause_win, COLOR_PAIR(1));
+                mvwprintw(pause_win, 0,(win_size.x-strlen(mesg[0]))/2,"%s",mesg[0]);
+                wattroff(pause_win, COLOR_PAIR(1));
                 wattron(pause_win, A_STANDOUT);
                 mvwprintw(pause_win, 3, (win_size.x - strlen(mesg[2])) / 2, "%s", mesg[2]);
                 wattroff(pause_win, A_STANDOUT);

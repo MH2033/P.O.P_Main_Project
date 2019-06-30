@@ -13,7 +13,7 @@ void *keyboard_handle(void *temp){
         if (kbhit()) {
             c = getch();
             if(c == Exit || c == '\e')
-                pthread_exit(0);
+                break;
             else if (c == up || c == down || c == right || c == left) {
                 if (c != move_key) {
                     move_key = c;
@@ -26,4 +26,5 @@ void *keyboard_handle(void *temp){
             refresh();
         }
     }
+    pthread_exit(NULL);
 }

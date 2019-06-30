@@ -36,6 +36,8 @@ void run_game() {
         move_player(move_key);
         if (c == '\e') {
             show_pause_window();
+            if(c == Exit)
+                break;
             pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
         }
         if(c == dblock.key) {
