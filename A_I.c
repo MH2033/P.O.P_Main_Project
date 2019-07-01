@@ -1,4 +1,4 @@
-#include "game_console.h"
+#include "headers.h"
 extern int flagx_i,flagx_k,flagy_l,flagy_j;
 struct dimension pos;
 extern char **game_map;

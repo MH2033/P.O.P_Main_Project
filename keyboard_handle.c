@@ -1,18 +1,20 @@
 #include <conio.h>
 #include <curses.h>
 #include <pthread.h>
-#include "game_console.h"
+#include "headers.h"
 #include "core_functions/bass.h"
 extern int c, move_key;
 extern char up, down, left, right, character, Exit;
 extern WINDOW *game_window;
 extern int lose_flag;
+extern int win_flag;
+extern int time_limit_flag;
 void *keyboard_handle(void *temp){
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
     if(c == Exit)
         pthread_exit(0);
     while(1) {
-        if(lose_flag){
+        if(lose_flag || win_flag || time_limit_flag){
             c = Exit;
             break;
         }

@@ -1,4 +1,4 @@
-#include "game_console.h"
+#include "headers.h"
 extern char up,down,left,right;
 extern struct opponent opp;
 extern int score[2];

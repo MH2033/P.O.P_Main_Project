@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <curses.h>
-#include "game_console.h"
+#include "headers.h"
 extern int score[];
 struct rpoint point;
 struct opponent opp;

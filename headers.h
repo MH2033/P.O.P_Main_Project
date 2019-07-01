@@ -1,5 +1,5 @@
-#ifndef P_O_P_MAIN_PROJECT_GAME_CONSOLE_H
-#define P_O_P_MAIN_PROJECT_GAME_CONSOLE_H
+#ifndef P_O_P_MAIN_PROJECT_HEADERS_H
+#define P_O_P_MAIN_PROJECT_HEADERS_H
 
 #include <stdio.h>
 
@@ -75,4 +75,6 @@ void *keyboard_handle(void *temp);
 int show_main_menu();
 void ingame_init();
 void save_score(void);
+void win(void);
+void time_limit_reached();
 #endif

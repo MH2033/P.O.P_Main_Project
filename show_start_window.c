@@ -1,6 +1,6 @@
 #include <curses.h>
 #include "core_functions/bass.h"
-#include "game_console.h"
+#include "headers.h"
 extern struct dimension map_size;
 extern WINDOW *game_window;
 void show_start_window() {

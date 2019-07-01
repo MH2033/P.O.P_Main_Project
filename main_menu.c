@@ -1,7 +1,7 @@
 #include <curses.h>
 #include <string.h>
 #include <stdlib.h>
-#include "game_console.h"
+#include "headers.h"
 extern struct dimension default_term_size;
 WINDOW *game_menu;
 int show_main_menu(){

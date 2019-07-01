@@ -1,4 +1,4 @@
-#include "game_console.h"
+#include "headers.h"
 extern char character;
 extern char deathblock;
 extern char **game_map;

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <curses.h>
 #include <unistd.h>
-#include "game_console.h"
+#include "headers.h"
 int main(int argc, char *argv[]) {
     int c;
     initialization();

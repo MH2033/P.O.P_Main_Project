@@ -1,4 +1,4 @@
-#include "game_console.h"
+#include "headers.h"
 extern struct rpoint point;
 extern int score[2];
 void save_score(void){

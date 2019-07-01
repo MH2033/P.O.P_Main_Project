@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "game_console.h"
+#include "headers.h"
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;
@@ -9,7 +9,7 @@ extern struct opponent opp;
 extern struct put dblock;
 extern char **game_map;
 int lose_flag;
-
+int win_flag;
 void move_up(struct dimension *pos, char obj, int score[], int i) {
     if (obj == character) {
         if (game_map[pos->y][pos->x] == obj) {
@@ -46,7 +46,7 @@ void move_up(struct dimension *pos, char obj, int score[], int i) {
                     game_map[pos->y - 1][pos->x] = obj;
                     game_map[pos->y][pos->x] = ' ';
                     pos->y = pos->y - 1;
-                    //show_winning_message();
+                    win_flag = 1;
                 }
             }
         }
@@ -107,7 +107,7 @@ void move_down(struct dimension *pos,char obj,int score[],int i) {
                     game_map[pos->y+1][pos->x] = obj;
                     game_map[pos->y][pos->x] = ' ';
                     pos->y = pos->y + 1;
-                    //show_winning_message();
+                    win_flag = 1;
                 }
             }
         }
@@ -170,7 +170,7 @@ void move_right(struct dimension *pos,char obj, int score[],int i) {
                     game_map[pos->y][pos->x+1] = obj;
                     game_map[pos->y][pos->x] = ' ';
                     pos->x = pos->x+1;
-                    //show_winning_message();
+                    win_flag = 1;
                 }
             }
         }
@@ -233,7 +233,7 @@ void move_left(struct dimension *pos, char obj,int score[],int i) {
                     game_map[pos->y][pos->x-1] = obj;
                     game_map[pos->y][pos->x] = ' ';
                     pos->x = pos->x-1;
-                    //show_winning_message();
+                    win_flag = 1;
                 }
             }
         }

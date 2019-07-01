@@ -1,6 +1,6 @@
 #include <math.h>
 #include <curses.h>
-#include "game_console.h"
+#include "headers.h"
 extern struct opponent opp;
 extern char **game_map;
 extern struct dimension map_size;
