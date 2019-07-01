@@ -42,14 +42,14 @@ raindbd *move_rain(raindbd * head){
         int x = head->head.x;
         int y = head->head.y;
         if (game_map[y + 1][x] == ' ' || game_map[y + 1][x] == object) {
+            game_map[y + 1][x] = game_map[y][x];
             game_map[y][x] = ' ';
-            game_map[y + 1][x] = deathblock;
             head->head.y++;
             head->head.x = x;
         }else {
-            if(game_map[y+1][x] == character)
+            if(game_map[y+1][x] == character && game_map[y][x] == deathblock)
                 game_over();
-            else if(game_map[y+1][x] == opp.rival){
+            else if(game_map[y+1][x] == opp.rival && game_map[y][x] == deathblock){
                 game_map[y+1][x] = ' ';
             }
             game_map[y][x] = ' ';
