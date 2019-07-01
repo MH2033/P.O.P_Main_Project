@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "game_console.h"
 extern struct dimension default_term_size;
+WINDOW *game_menu;
 void show_main_menu(){
     char mesg[5][20] = {"Retro Game Console", "Play", "Scoreboard", "Settings", "Exit"};
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
@@ -11,6 +12,7 @@ void show_main_menu(){
     cbreak();
     clear();
     WINDOW *main_menu = newwin(2*default_term_size.y/3, 2*default_term_size.x/3, default_term_size.y/5 - 1, default_term_size.x/5-4);
+    game_menu = newwin(2*default_term_size.y/3, 2*default_term_size.x/3, default_term_size.y/5 - 1, default_term_size.x/5-4);
     keypad(main_menu, TRUE);
     touchwin(stdscr);
     refresh();
@@ -50,6 +52,6 @@ void show_main_menu(){
         else if(ch == '\n' && i == 4)
             _Exit(0);
     }
+    delwin(main_menu);
 
 }
-

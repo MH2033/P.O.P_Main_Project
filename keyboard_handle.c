@@ -24,7 +24,7 @@ void *keyboard_handle(void *temp){
             } else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT) {
                 att(c);
             }
-            wrefresh(game_window);
+            print_map();
         }
     }
     pthread_exit(NULL);

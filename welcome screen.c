@@ -3,14 +3,17 @@
 #include <string.h>
 #include <dirent.h>
 #include "game_console.h"
-
-void print_file_name(struct file_name * head,int counter){
+extern WINDOW *game_menu;
+char list[100][100];
+extern struct dimension default_term_size;
+int save_file_name_to_list(struct file_name *head, int counter){
     if (head == NULL){
-        return;
+        strcpy(list[counter], "Back");
+        return counter;
     }
-    printw("%d )%s\n",counter,head->file,counter);
-    counter ++;
-    print_file_name(head->next, counter);
+    strcpy(list[counter], head->file);
+    counter++;
+    save_file_name_to_list(head->next, counter);
 }
 struct file_name* add_file(struct file_name * head ,char * filename ){
     if (head == NULL) {
@@ -21,10 +24,8 @@ struct file_name* add_file(struct file_name * head ,char * filename ){
         return Students;
     } else {
         head->next = add_file(head->next,filename);
-        //printf("%s\n",head->next->file);
         return head;
     }
-    return head;
 }
 char * findpass(struct file_name * head, int number){
     if (number == 1){
@@ -33,8 +34,10 @@ char * findpass(struct file_name * head, int number){
     return findpass(head->next,number-1);
 }
 char* What_in_it(void){
-    char *id;
-    id = (char *)malloc(sizeof(char)*100);
+    int counter;
+    char mesg[15] = "Select a game";
+    int ch, i = 1;
+    int id;
     char * name_file = (char *)malloc(sizeof(char)*100);
     struct dirent * dn;
     int count = 0;
@@ -46,9 +49,63 @@ char* What_in_it(void){
         count++;
     }
     closedir(dirct);
-    print_file_name(head , 1);
-    printw("==========================================\n");
-    printw("Plese Enter The Number Of The File That You Want To Open :");
-    scanw("%s", id);
-    return findpass(head,atoi(id));
+    box(game_menu, 0, 0);
+    wattron(game_menu, COLOR_PAIR(1));
+    mvwprintw(game_menu, 0,(2*default_term_size.x/3-strlen(mesg))/2,"%s",mesg);
+    wattroff(game_menu, COLOR_PAIR(1));
+    wrefresh(game_menu);
+    counter = save_file_name_to_list(head, 1);
+    for(i = 1; i <= counter; i++){
+        if(i == 1)
+            wattron(game_menu, A_STANDOUT);
+        else
+            wattroff(game_menu, A_STANDOUT);
+        mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(list[i]))/2, "%s",list[i]);
+    }
+    wrefresh(game_menu);
+    i = 1;
+    while(1) {
+        ch = getch();
+        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(list[i])) / 2, "%s", list[i]);
+        switch (ch) {
+            case KEY_UP:
+                i--;
+                i = (i < 1) ? counter : i;
+                break;
+            case KEY_DOWN:
+                i++;
+                i = (i > counter) ? 1 : i;
+                break;
+        }
+        wattron(game_menu, A_STANDOUT);
+        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(list[i])) / 2, "%s", list[i]);
+        wattroff(game_menu, A_STANDOUT);
+        wrefresh(game_menu);
+        if(ch == '\n'){
+            if(i < counter){
+                id = i;
+                break;
+            }
+            else{
+                delwin(game_menu);
+                show_main_menu();
+                box(game_menu, 0, 0);
+                wattron(game_menu, COLOR_PAIR(1));
+                mvwprintw(game_menu, 0,(2*default_term_size.x/3-strlen(mesg))/2,"%s",mesg);
+                wattroff(game_menu, COLOR_PAIR(1));
+                wrefresh(game_menu);
+                counter = save_file_name_to_list(head, 1);
+                for(i = 1; i <= counter; i++){
+                    if(i == 1)
+                        wattron(game_menu, A_STANDOUT);
+                    else
+                        wattroff(game_menu, A_STANDOUT);
+                    mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(list[i]))/2, "%s",list[i]);
+                }
+                wrefresh(game_menu);
+                i = 1;
+            }
+        }
+    }
+    return findpass(head,id);
 }
