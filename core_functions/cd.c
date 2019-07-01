@@ -10,5 +10,4 @@ void cd(char * direct){
     strcat(game_file_addr,direct);
     chdir(game_file_addr);
     opendir(game_file_addr);
-
 }
