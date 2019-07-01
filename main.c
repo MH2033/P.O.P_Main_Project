@@ -7,7 +7,8 @@ int main(int argc, char *argv[]) {
     initialization();
     init_pair(3, COLOR_RED, COLOR_BLACK);
     while(1) {
-        show_main_menu();
+        if(show_main_menu())
+            break;
         if ((c = load_config(What_in_it()))) {
             clear();
             attron(COLOR_PAIR(3));
@@ -24,4 +25,5 @@ int main(int argc, char *argv[]) {
         run_game();
         cleanup();
     }
+    return 0;
 }

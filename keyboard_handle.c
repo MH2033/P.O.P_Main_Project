@@ -6,11 +6,16 @@
 extern int c, move_key;
 extern char up, down, left, right, character, Exit;
 extern WINDOW *game_window;
+extern int lose_flag;
 void *keyboard_handle(void *temp){
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
     if(c == Exit)
         pthread_exit(0);
     while(1) {
+        if(lose_flag){
+            c = Exit;
+            break;
+        }
         if (kbhit()) {
             c = getch();
             if(c == Exit || c == '\e')

@@ -4,7 +4,7 @@
 #include "game_console.h"
 extern struct dimension default_term_size;
 WINDOW *game_menu;
-void show_main_menu(){
+int show_main_menu(){
     char mesg[5][20] = {"Retro Game Console", "Play", "Scoreboard", "Settings", "Exit"};
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     curs_set(0);
@@ -50,8 +50,8 @@ void show_main_menu(){
         if(ch == '\n' && i == 1)
             break;
         else if(ch == '\n' && i == 4)
-            _Exit(0);
+            return 1;
     }
     delwin(main_menu);
-
+    return 0;
 }

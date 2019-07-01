@@ -21,6 +21,7 @@ extern struct opp_list *head_op;
 int c = 0;
 int move_key = 0;
 extern WINDOW *game_window;
+extern int lose_flag;
 void run_game() {
     c = 0;
     register int i;
@@ -33,6 +34,8 @@ void run_game() {
     print_map();
     pthread_create(&keyboard_thread, NULL, keyboard_handle, NULL);
     while (c != Exit && t_limit > 0) {
+        if(lose_flag)
+            break;
         player_last_pos.y = player_pos.y;
         player_last_pos.x = player_pos.x;
         move_player(move_key);
@@ -65,7 +68,11 @@ void run_game() {
             t_limit -= 0.2;
     }
     pthread_join(keyboard_thread, NULL);
+    if(lose_flag){
+        lose_flag = 0;
+        game_over();
+    }
     chdir("..");
     chdir("..");
-    delwin(game_window);
+    //delwin(game_window);
 }

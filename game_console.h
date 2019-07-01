@@ -72,7 +72,7 @@ void clean_up();
 void cleanup();
 void att(int direction);
 void *keyboard_handle(void *temp);
-void show_main_menu();
+int show_main_menu();
 void ingame_init();
 
 #endif
