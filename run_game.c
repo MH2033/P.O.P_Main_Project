@@ -72,7 +72,8 @@ void run_game() {
         lose_flag = 0;
         game_over();
     }
+    save_score();
     chdir("..");
     chdir("..");
-    //delwin(game_window);
+    delwin(game_window);
 }

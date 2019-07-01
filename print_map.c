@@ -12,6 +12,7 @@ extern int time_limit;
 extern int global_counter;
 extern char character, deathblock, solidblock, wall;
 extern int c2,flagx_i,flagx_k,flagy_l,flagy_j;
+extern struct put dblock;
 extern WINDOW *game_window;
 void print_map(){
     register int i, j;
@@ -51,6 +52,9 @@ void print_map(){
                 mvwaddch(game_window, i, j, game_map[i][j]);
             }
         }
+    }
+    if (dblock.limit){
+        mvwprintw(game_window, map_size.y, 0, "remaining db: %d", dblock.limit);
     }
     if(point.symbol)
         mvwprintw(game_window, map_size.y+1, 0, "Score: %d", score[0]);
