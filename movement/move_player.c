@@ -1,4 +1,4 @@
-#include "game_console.h"
+#include "headers.h"
 
 extern char up, down, left, right, character, Exit;
 extern struct dimension player_pos;

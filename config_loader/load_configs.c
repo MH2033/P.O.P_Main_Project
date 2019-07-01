@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../game_console.h"
+#include "headers.h"
 
 char solidblock, deathblock, moveblock, wall, target, object;
 char up, down, left, right, character, Exit;

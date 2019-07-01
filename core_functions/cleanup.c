@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <curses.h>
-#include "game_console.h"
+#include "headers.h"
 extern char character;
 extern char **game_map;
 extern int score[2];

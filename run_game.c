@@ -4,7 +4,7 @@
 #include <string.h>
 #include <dirent.h>
 #include "core_functions/bass.h"
-#include "game_console.h"
+#include "headers.h"
 #include <dirent.h>
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
@@ -22,6 +22,8 @@ int c = 0;
 int move_key = 0;
 extern WINDOW *game_window;
 extern int lose_flag;
+extern int win_flag;
+int time_limit_flag;
 void run_game() {
     c = 0;
     register int i;
@@ -67,12 +69,21 @@ void run_game() {
         if(time_limit)
             t_limit -= 0.2;
     }
+    if(t_limit <= 0){
+        time_limit_flag = 1;
+        time_limit_reached();
+    }
     pthread_join(keyboard_thread, NULL);
     if(lose_flag){
         lose_flag = 0;
         game_over();
     }
+    else if(win_flag){
+        win_flag = 0;
+        win();
+    }
     save_score();
+    time_limit_flag = 0;
     chdir("..");
     chdir("..");
     delwin(game_window);

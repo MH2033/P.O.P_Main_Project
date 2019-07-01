@@ -14,7 +14,7 @@ add_executable(P_O_P_Main_Project
         core_functions/delay.c
         movement/move_player.c
         movement/player_movement.c
-        game_console.h
+        headers.h
         initialization.c
         main.c
         print_map.c
@@ -22,7 +22,7 @@ add_executable(P_O_P_Main_Project
         random_gen.c
         run_game.c
         "welcome screen.c" movement/move_comp.c
-        FindCloseFood.c END_GAME.c A_I.c show_start_window.c show_pause_window.c
+        FindCloseFood.c end_of_game.c A_I.c show_start_window.c show_pause_window.c
         raindeath.c
         debug.c
         core_functions/cleanup.c attack.c keyboard_handle.c main_menu.c save.config.c)

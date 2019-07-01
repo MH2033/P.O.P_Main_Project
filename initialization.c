@@ -1,6 +1,6 @@
 #include <time.h>
 #include <curses.h>
-#include "game_console.h"
+#include "headers.h"
 #include "core_functions/bass.h"
 
 extern char solidblock, deathblock, moveblock, wall, target, object;

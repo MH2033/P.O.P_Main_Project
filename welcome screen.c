@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "game_console.h"
+#include "headers.h"
 extern WINDOW *game_menu;
 char list[100][100];
 extern struct dimension default_term_size;

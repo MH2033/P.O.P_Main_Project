@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "game_console.h"
+#include "headers.h"
 extern char deathblock;
 extern int randomness;
 struct dimension map_size;
