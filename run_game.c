@@ -65,7 +65,7 @@ void run_game() {
             t_limit -= 0.2;
     }
     pthread_join(keyboard_thread, NULL);
-    save_config();
+    save_score();
     chdir("..");
     chdir("..");
     delwin(game_window);

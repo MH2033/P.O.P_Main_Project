@@ -74,5 +74,5 @@ void att(int direction);
 void *keyboard_handle(void *temp);
 void show_main_menu();
 void ingame_init();
-void save_config(void);
+void save_score(void);
 #endif

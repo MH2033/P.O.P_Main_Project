@@ -1,7 +1,7 @@
 #include "game_console.h"
 extern struct rpoint point;
 extern int score[2];
-void save_config(void){
+void save_score(void){
     if(point.symbol) {
         FILE *file;
         int bigest_score = score[0];
