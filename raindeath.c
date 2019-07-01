@@ -4,6 +4,7 @@ extern char deathblock,**game_map;
 extern char object;
 extern int raindb;
 int rain_x,rain_y;
+extern int lose_flag;
 extern char character;
 extern struct opponent opp;
 extern struct dimension map_size;
@@ -41,14 +42,15 @@ raindbd *move_rain(raindbd * head){
     else{
         int x = head->head.x;
         int y = head->head.y;
-        if (game_map[y + 1][x] == ' ' || game_map[y + 1][x] == object) {
+        if ((game_map[y + 1][x] == ' ' || game_map[y + 1][x] == object) && game_map[y][x] == deathblock) {
             game_map[y + 1][x] = game_map[y][x];
             game_map[y][x] = ' ';
             head->head.y++;
             head->head.x = x;
         }else {
-            if(game_map[y+1][x] == character && game_map[y][x] == deathblock)
-                game_over();
+            if(game_map[y+1][x] == character && game_map[y][x] == deathblock) {
+                lose_flag =1;
+            }
             else if(game_map[y+1][x] == opp.rival && game_map[y][x] == deathblock){
                 game_map[y+1][x] = ' ';
             }

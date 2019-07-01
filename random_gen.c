@@ -8,10 +8,14 @@ extern int randomness;
 struct dimension map_size;
 extern char **game_map;
 extern int rain_x,rain_y;
+unsigned short lfsr = 0xACE1u;
+unsigned bit;
 void random_gen(int n,char b){
+    int flag = 0;
     int counter1 = 0,ran_x,ran_y;
     randomness++;
-    srand(randomness);
+    int core = time(NULL);
+    srand(core+randomness);
     if (deathblock == b) {
         ran_x = (rand() % (map_size.x - 2)) + 1;
         while (counter1<n) {
@@ -20,12 +24,15 @@ void random_gen(int n,char b){
                 rain_x = ran_x;
                 rain_y = 1;
                 counter1++;
+                flag = 1;
             } else {
-                srand(randomness);
-                if(randomness == RAND_MAX)
-                    randomness = time(0)%100;
+                if(randomness == RAND_MAX || flag == 0)
+                    randomness = time(0)%101;
                 else
                     randomness++;
+                //srand(randomness);
+                debug_output(ran_y,ran_x);
+                flag = 0;
             }
         }
         return;
@@ -37,7 +44,7 @@ void random_gen(int n,char b){
                 game_map[ran_y][ran_x] = b;
                 counter1++;
             } else {
-                srand(randomness);
+                //srand(randomness);
                 if(randomness == RAND_MAX)
                     randomness = time(0)%100;
                 else

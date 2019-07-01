@@ -20,14 +20,12 @@ void att(int direction){
         for(i = player_pos.y; (i > (player_pos.y - attack)) && (i > 0); i--){
             if((game_map[i][player_pos.x] == deathblock) || (game_map[i][player_pos.x] == opp.rival))
                 game_map[i][player_pos.x] = ' ';
-            debug_output(i, player_pos.y);
         }
     }
     else if(direction == KEY_RIGHT){
         for(i = player_pos.x; (i < (player_pos.x + attack) )&& (i < map_size.x); i++){
             if((game_map[player_pos.y][i] == deathblock) || (game_map[player_pos.y][i] == opp.rival))
                 game_map[player_pos.y][i] = ' ';
-            debug_output(player_pos.y, i);
         }
     }
     else if(direction == KEY_LEFT){
@@ -35,6 +33,5 @@ void att(int direction){
             if((game_map[player_pos.y][i] == deathblock) || (game_map[player_pos.y][i] == opp.rival))
                 game_map[player_pos.y][i] = ' ';
         }
-        debug_output(player_pos.y, i);
     }
 }
