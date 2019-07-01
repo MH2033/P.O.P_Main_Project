@@ -26,27 +26,13 @@ void game_over(void){
     if(point.symbol){
        sprintf(temp, "Your score is: %d", score[0]);
        mvwprintw(game_over_window, i, (win_size.x-strlen(temp))/2, "%s", temp);
+       i++;
     }
+    wattron(game_over_window, A_STANDOUT);
+    mvwprintw(game_over_window, i+1, (win_size.x-strlen("Return to main menu"))/2, "%s", "Return to main menu");
+    wattroff(game_over_window, A_STANDOUT);
     wrefresh(game_over_window);
-    i = 1;
-    while(1) {
-        ch = getch();
-        mvwprintw(game_over_window, i + 1, (win_size.x - strlen(mesg)) / 2, "%s", mesg);
-        switch (ch) {
-            case KEY_UP:
-                i--;
-                i = (i < 1) ? 2 : i;
-                break;
-            case KEY_DOWN:
-                i++;
-                i = (i > 3) ? 1 : i;
-                break;
-        }
-        wattron(game_over_window, A_STANDOUT);
-        mvwprintw(game_over_window, i + 1, (win_size.x - strlen(mesg)) / 2, "%s", mesg);
-        wattroff(game_over_window, A_STANDOUT);
-        wrefresh(game_over_window);
-    }
+    while(getch()!= '\n');
 }
 void win(void){
     clear();
