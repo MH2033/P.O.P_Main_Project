@@ -25,7 +25,7 @@ add_executable(P_O_P_Main_Project
         FindCloseFood.c end_of_game.c A_I.c show_start_window.c show_pause_window.c
         raindeath.c
         debug.c
-        core_functions/cleanup.c attack.c keyboard_handle.c main_menu.c save.config.c)
+        core_functions/cleanup.c attack.c keyboard_handle.c main_menu.c save.config.c "read save.c")
 
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/pdcurses.a)
 target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/bass.lib)

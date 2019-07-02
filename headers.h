@@ -83,4 +83,5 @@ void ingame_init();
 void save_score(void);
 void win(void);
 void time_limit_reached();
+int read_save(void);
 #endif
