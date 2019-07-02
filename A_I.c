@@ -64,7 +64,7 @@ int A_I(int i,int j, struct need * opps){
         opps->opp_s.flagx_k= 0;
         opps->opp_s.flagx_i =0;
         opps->opp_s.flagy_j = 1;
-    }else if(opps->opp_s.flagx_k == 0 &&(game_map[x_p_y-1][x_p_x] == ' ' || game_map[x_p_y-1][x_p_x] == opp.dest)){
+    }else if(opps->opp_s.flagx_i == 0 &&(game_map[x_p_y-1][x_p_x] == ' ' || game_map[x_p_y-1][x_p_x] == opp.dest)){
         opps->opp_s.flagx_k= 1;
         opps->opp_s.flagy_l = 0;
         opps->opp_s.flagy_j = 0;
@@ -77,8 +77,8 @@ int A_I(int i,int j, struct need * opps){
         opps->opp_s.flagy_l = 1;
     }else if(game_map[x_p_y+1][x_p_x] == ' ' || game_map[x_p_y+1][x_p_x] == opp.dest){
         opps->opp_s.flagx_k= 0;
-        opps->opp_s.flagx_i =0;
-        opps->opp_s.flagy_j = 1;
+        opps->opp_s.flagx_i =1;
+        opps->opp_s.flagy_j = 0;
         opps->opp_s.flagy_l = 0;
         c2 = down;
     }else if(game_map[x_p_y][x_p_x+1] == ' ' || game_map[x_p_y][x_p_x+1] == opp.dest){
@@ -88,9 +88,9 @@ int A_I(int i,int j, struct need * opps){
         opps->opp_s.flagy_j = 1;
         opps->opp_s.flagy_l = 0;
     }else if(game_map[x_p_y-1][x_p_x] == ' ' || game_map[x_p_y-1][x_p_x] == opp.dest){
-        opps->opp_s.flagx_k= 0;
+        opps->opp_s.flagx_k= 1;
         opps->opp_s.flagx_i =0;
-        opps->opp_s.flagy_j = 1;
+        opps->opp_s.flagy_j = 0;
         opps->opp_s.flagy_l = 0;
         c2 = up;
     }
