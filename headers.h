@@ -44,7 +44,7 @@ struct file_name{
 };
 
 struct opp_list{
-    struct need ops;
+    struct need* ops;
     struct opp_list *next;
 };
 
@@ -53,10 +53,10 @@ int load_map(FILE *);
 int load_settings(FILE *);
 void random_gen(int n,char b);
 void initialization();
-void move_up(struct dimension *pos,char obj,int score[],int i);
-void move_down(struct dimension *pos,char obj,int score[],int i);
-void move_right(struct dimension *pos,char obj, int score[],int i);
-void move_left(struct dimension *pos,char obj,int score[],int i);
+void move_up(struct need *pos,char obj,int score[],int i);
+void move_down(struct need *pos,char obj,int score[],int i);
+void move_right(struct need *pos,char obj, int score[],int i);
+void move_left(struct need *pos,char obj,int score[],int i);
 void move_player(char c);
 void print_map();
 void hidecursor();
@@ -65,14 +65,14 @@ void run_game();
 void put_dblock(struct dimension);
 void delay(int number_of_seconds);
 char *What_in_it(void);
-int A_I(int i,int j,struct need op);
-int FindCloseFood(struct need op);
+int A_I(int i,int j,struct need *op);
+int FindCloseFood(struct need *op);
 void *move_computer(void *);
 void show_start_window();
 void show_pause_window();
 void game_over();
 db* move_db(db *);
-void debug_output(int i, int j,char );
+void debug_output(int w,int b,int i , int j,char l );
 void rain_db(void);
 void clean_up();
 void cleanup();
