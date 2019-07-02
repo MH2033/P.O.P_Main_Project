@@ -1,11 +1,13 @@
 #include <curses.h>
 #include <string.h>
 #include <stdlib.h>
+#include "core_functions/bass.h"
 #include "headers.h"
 extern struct dimension default_term_size;
 WINDOW *game_menu;
+HSTREAM main_background;
 int show_main_menu(){
-    char mesg[5][20] = {"Retro Game Console", "Play", "Scoreboard", "Settings", "Exit"};
+    char mesg[5][20] = {"Arcade Game Console", "Play", "Scoreboard", "Settings", "Exit"};
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     curs_set(0);
     noecho();
@@ -30,6 +32,8 @@ int show_main_menu(){
     }
     wrefresh(main_menu);
     i = 1;
+    if(BASS_ChannelIsActive(main_background) != BASS_ACTIVE_PLAYING)
+        BASS_ChannelPlay(main_background, FALSE);
     while(1) {
         ch = getch();
         mvwprintw(main_menu, 2*(i + 1), (2 * default_term_size.x / 3 - strlen(mesg[i])) / 2, "%s", mesg[i]);
@@ -50,7 +54,7 @@ int show_main_menu(){
         if(ch == '\n' && i == 1)
             break;
         else if(ch == '\n' && i == 4)
-            return 1;
+            _Exit(0);
     }
     delwin(main_menu);
     return 0;

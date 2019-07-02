@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
+#include "core_functions/bass.h"
 #include "headers.h"
 extern WINDOW *game_menu;
 char list[100][100];
 extern struct dimension default_term_size;
+extern HSTREAM main_background;
 int save_file_name_to_list(struct file_name *head, int counter){
     if (head == NULL){
         strcpy(list[counter], "Back");
@@ -107,5 +109,6 @@ char* What_in_it(void){
             }
         }
     }
+    BASS_ChannelStop(main_background);
     return findpass(head,id);
 }

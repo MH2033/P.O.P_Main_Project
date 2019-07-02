@@ -14,6 +14,7 @@ extern char **game_map;
 int randomness;
 WINDOW *game_window;
 struct dimension default_term_size;
+extern HSTREAM main_background;
 void initialization(){
     //Terminal initializations
         initscr();
@@ -27,6 +28,7 @@ void initialization(){
     //
     //Sound initialization
         BASS_Init(-1, 44100, 0, 0, NULL);
+        main_background = BASS_StreamCreateFile(FALSE,"background.mp3", 0, 0, BASS_SAMPLE_LOOP);
 }
 
 void ingame_init(){
