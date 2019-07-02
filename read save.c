@@ -8,8 +8,3 @@ int read_save(void){
     }
     return number;
 }
-void scoreboard(void){
-    if (read_save() != -1){
-
-    }
-}
