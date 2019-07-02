@@ -17,7 +17,13 @@ void move_up(struct need*pos, char obj, int score[], int i) {
                 game_map[pos->ops.y][pos->ops.x] = ' ';
                 game_map[pos->ops.y-1][pos->ops.x] = obj;
                 pos->ops.y = pos->ops.y - 1;
-            } else if (game_map[pos->ops.y - 1][pos->ops.x] == point.symbol) {
+            }
+            else if (game_map[pos->ops.y - 1][pos->ops.x] == target && character == object){
+                game_map[pos->ops.y][pos->ops.x] = ' ';
+                game_map[pos->ops.y-1][pos->ops.x] = character;
+                pos->ops.y = pos->ops.y - 1;
+                win_flag = 1;
+            }else if (game_map[pos->ops.y - 1][pos->ops.x] == point.symbol) {
                 score[i] += point.score;
                 game_map[pos->ops.y - 1][pos->ops.x] = ' ';
                 random_gen(1, point.symbol);
@@ -41,7 +47,7 @@ void move_up(struct need*pos, char obj, int score[], int i) {
                     game_map[pos->ops.y][pos->ops.x] = ' ';
                     pos->ops.y = pos->ops.y - 1;
                 }
-                else if (game_map[pos->ops.y - 2][pos->ops.x] == target) {
+                else if (game_map[pos->ops.y - 2][pos->ops.x] == target && object != character) {
                     game_map[pos->ops.y - 2][pos->ops.x] = object;
                     game_map[pos->ops.y - 1][pos->ops.x] = obj;
                     game_map[pos->ops.y][pos->ops.x] = ' ';
@@ -78,7 +84,13 @@ void move_down(struct need *pos,char obj,int score[],int i) {
                 game_map[pos->ops.y][pos->ops.x] = ' ';
                 game_map[pos->ops.y + 1][pos->ops.x] = obj;
                 pos->ops.y = pos->ops.y + 1;
-            } else if (game_map[pos->ops.y + 1][pos->ops.x] == point.symbol) {
+            }else if (game_map[pos->ops.y + 1][pos->ops.x] == target && character == object) {
+                game_map[pos->ops.y][pos->ops.x] = ' ';
+                game_map[pos->ops.y + 1][pos->ops.x] = character;
+                pos->ops.y = pos->ops.y + 1;
+                win_flag = 1;
+            }
+            else if (game_map[pos->ops.y + 1][pos->ops.x] == point.symbol) {
                 score[i] += point.score;
                 game_map[pos->ops.y + 1][pos->ops.x] = ' ';
                 random_gen(1, point.symbol);
@@ -141,7 +153,12 @@ void move_right(struct need *pos,char obj, int score[],int i) {
                 game_map[pos->ops.y][pos->ops.x] = ' ';
                 game_map[pos->ops.y][pos->ops.x + 1] = obj;
                 pos->ops.x = pos->ops.x + 1;
-            } else if (game_map[pos->ops.y][pos->ops.x + 1] == point.symbol) {
+            } else if (game_map[pos->ops.y][pos->ops.x+1] == target && character == object) {
+                game_map[pos->ops.y][pos->ops.x] = ' ';
+                game_map[pos->ops.y][pos->ops.x+1] = character;
+                pos->ops.x = pos->ops.x + 1;
+                win_flag = 1;
+            }else if (game_map[pos->ops.y][pos->ops.x + 1] == point.symbol) {
                 score[i] += point.score;
                 game_map[pos->ops.y][pos->ops.x + 1] = ' ';
                 random_gen(1, point.symbol);
@@ -204,6 +221,11 @@ void move_left(struct need *pos, char obj,int score[],int i) {
                 game_map[pos->ops.y][pos->ops.x] = ' ';
                 game_map[pos->ops.y][pos->ops.x - 1] = obj;
                 pos->ops.x = pos->ops.x - 1;
+            }else if (game_map[pos->ops.y][pos->ops.x-1] == target && character == object) {
+                game_map[pos->ops.y][pos->ops.x] = ' ';
+                game_map[pos->ops.y][pos->ops.x-1] = character;
+                pos->ops.x = pos->ops.x - 1;
+                win_flag = 1;
             } else if (game_map[pos->ops.y][pos->ops.x - 1] == point.symbol) {
                 score[i] += point.score;
                 game_map[pos->ops.y][pos->ops.x - 1] = ' ';

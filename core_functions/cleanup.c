@@ -14,6 +14,8 @@ extern int time_limit, raindb, attack;
 extern struct rpoint point;
 extern struct put dblock;
 extern struct dimension default_term_size;
+extern int c;
+extern int move_key;
 void cleanup(){
     int i, j;
     for(i = 0; i < map_size.y; i++){
@@ -58,4 +60,6 @@ void cleanup(){
     solidblock = 0;
     score[0] = 0;
     score[1] = 0;
+    c = 0;
+    move_key = 0;
 }
