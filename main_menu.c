@@ -16,7 +16,6 @@ int show_main_menu(){
     WINDOW *main_menu = newwin(2*default_term_size.y/3, 2*default_term_size.x/3, default_term_size.y/5 - 1, default_term_size.x/5-4);
     game_menu = newwin(2*default_term_size.y/3, 2*default_term_size.x/3, default_term_size.y/5 - 1, default_term_size.x/5-4);
     keypad(main_menu, TRUE);
-    touchwin(stdscr);
     refresh();
     box(main_menu, 0, 0);
     wattron(main_menu, COLOR_PAIR(1));

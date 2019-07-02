@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <curses.h>
+#include <string.h>
 #include "headers.h"
 extern int score[];
 struct rpoint point;
@@ -76,6 +77,10 @@ void print_map(){
     }
     if(point.symbol) {
         mvwprintw(game_window, z, 0, "Score: %d", score[0]);
+        int c;
+        if((c = read_save()) != -1){
+            mvwprintw(game_window, z,map_size.x - strlen("Highest Score:\t\t") , "Highest Score: %d", c);
+        }
     }
     wattroff(game_window, COLOR_PAIR(2));
     wrefresh(game_window);
