@@ -5,10 +5,9 @@ int global_counter = 0;
 extern char character;
 char **game_map;
 struct dimension map_size = {0, 0};
-struct dimension player_pos;
+struct need player_pos;
 extern struct opponent opp;
 struct opp_list *head_op;
-
 int load_map(FILE *map_file){
     int c, i = 0, j = 0;
     struct opp_list *temp;
@@ -37,8 +36,8 @@ int load_map(FILE *map_file){
             global_counter++;
         }
         if(c == character){
-            player_pos.y = i;
-            player_pos.x = j;
+            player_pos.ops.y = i;
+            player_pos.ops.x = j;
         }
         if(c != '\n'){
             game_map[i][j] = c;
