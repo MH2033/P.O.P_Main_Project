@@ -55,7 +55,7 @@ void run_game() {
         i = 0;
         temp = head_op;
         while(temp != NULL){
-            pthread_create(&thread[i], NULL, move_computer, &(temp -> pos));
+            pthread_create(&thread[i], NULL, move_computer, &(temp ->ops));
             temp = temp -> next;
             i++;
         }

@@ -31,7 +31,6 @@ void random_gen(int n,char b){
                 else
                     randomness++;
                 //srand(randomness);
-                debug_output(ran_y,ran_x);
                 flag = 0;
             }
         }
