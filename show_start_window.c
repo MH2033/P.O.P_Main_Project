@@ -3,6 +3,7 @@
 #include "headers.h"
 extern struct dimension map_size;
 extern WINDOW *game_window;
+extern HSTREAM background_music;
 void show_start_window() {
     char mesg3[] = "Game starts in";
     char mesg4[] = "3";
@@ -32,5 +33,9 @@ void show_start_window() {
     wattroff(start_win, COLOR_PAIR(2));
     wrefresh(start_win);
     delwin(start_win);
+    BASS_ChannelStop(start);
+    BASS_StreamFree(start);
+    background_music = BASS_StreamCreateFile(FALSE,"background.mp3", 0, 0, BASS_SAMPLE_LOOP);
+    BASS_ChannelPlay(background_music, FALSE);
     werase(game_window);
 }

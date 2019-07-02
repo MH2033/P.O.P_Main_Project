@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <curses.h>
+#include "core_functions/bass.h"
 #include "headers.h"
 extern char character;
 extern char **game_map;
@@ -16,6 +17,7 @@ extern struct put dblock;
 extern struct dimension default_term_size;
 extern int c;
 extern int move_key;
+extern HSTREAM background_music;
 void cleanup(){
     int i, j;
     for(i = 0; i < map_size.y; i++){

@@ -11,6 +11,7 @@ extern int win_flag;
 extern int time_limit_flag;
 void *keyboard_handle(void *temp){
     HSTREAM move = BASS_StreamCreateFile(FALSE,"move.mp3", 0, 0, 0);
+    HSTREAM attack = BASS_StreamCreateFile(FALSE, "attack.mp3", 0, 0, 0);
     if(c == Exit)
         pthread_exit(0);
     while(1) {
@@ -29,6 +30,7 @@ void *keyboard_handle(void *temp){
                     move_player(move_key);
                 }
             } else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT) {
+                BASS_ChannelPlay(attack, FALSE);
                 att(c);
             }
             print_map();

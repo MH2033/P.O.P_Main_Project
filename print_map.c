@@ -10,7 +10,7 @@ extern struct dimension map_size;
 extern float t_limit;
 extern int time_limit;
 extern int global_counter;
-extern char character, deathblock, solidblock, wall;
+extern char character, deathblock, solidblock, wall, target, object;
 extern struct put dblock;
 extern WINDOW *game_window;
 void print_map(){
@@ -21,6 +21,7 @@ void print_map(){
     init_pair(3, COLOR_RED, COLOR_BLACK);
     init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(5, COLOR_BLUE, COLOR_BLACK);
+    init_pair(6, COLOR_CYAN, COLOR_BLACK);
     for(i = 0; i < map_size.y; i++){
         for(j = 0; j < map_size.x; j++) {
             if(game_map[i][j] == opp.rival) {
@@ -47,6 +48,16 @@ void print_map(){
                 wattron(game_window, COLOR_PAIR(4));
                 mvwaddch(game_window, i, j, game_map[i][j]);
                 wattroff(game_window, COLOR_PAIR(4));
+            }
+            else if(game_map[i][j] == target){
+                wattron(game_window, COLOR_PAIR(2));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(2));
+            }
+            else if(game_map[i][j] == object){
+                wattron(game_window, COLOR_PAIR(6));
+                mvwaddch(game_window, i, j, game_map[i][j]);
+                wattroff(game_window, COLOR_PAIR(6));
             }
             else{
                 mvwaddch(game_window, i, j, game_map[i][j]);

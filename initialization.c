@@ -13,6 +13,7 @@ extern struct dimension map_size;
 extern char **game_map;
 int randomness;
 WINDOW *game_window;
+HSTREAM background_music;
 struct dimension default_term_size;
 extern HSTREAM main_background;
 void initialization(){

@@ -24,6 +24,7 @@ extern WINDOW *game_window;
 extern int lose_flag;
 extern int win_flag;
 int time_limit_flag;
+extern HSTREAM background_music;
 void run_game() {
     c = 0;
     register int i;
@@ -69,6 +70,8 @@ void run_game() {
         if(time_limit)
             t_limit -= 0.2;
     }
+    BASS_ChannelStop(background_music);
+    BASS_StreamFree(background_music);
     if(t_limit <= 0){
         time_limit_flag = 1;
         time_limit_reached();
