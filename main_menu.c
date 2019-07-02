@@ -7,7 +7,7 @@ extern struct dimension default_term_size;
 WINDOW *game_menu;
 HSTREAM main_background;
 int show_main_menu(){
-    char mesg[5][20] = {"Arcade Game Console", "Play", "Scoreboard", "Settings", "Exit"};
+    static char mesg[5][30] = {"Arcade Game Console", "Play", "Scoreboard", "Background Music Off", "Exit"};
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     curs_set(0);
     noecho();
@@ -32,7 +32,7 @@ int show_main_menu(){
     }
     wrefresh(main_menu);
     i = 1;
-    if(BASS_ChannelIsActive(main_background) != BASS_ACTIVE_PLAYING)
+    if(BASS_ChannelIsActive(main_background) != BASS_ACTIVE_PLAYING && strcmp(mesg[3], "Background Music Off") == 0)
         BASS_ChannelPlay(main_background, FALSE);
     while(1) {
         ch = getch();
@@ -53,6 +53,25 @@ int show_main_menu(){
         wrefresh(main_menu);
         if(ch == '\n' && i == 1)
             break;
+        else if(ch == '\n' && i == 3){
+            if(strcmp(mesg[3], "Background Music Off") == 0){
+                strcpy(mesg[3], "Background Music On ");
+                BASS_ChannelStop(main_background);
+            } else{
+                strcpy(mesg[3], "Background Music Off");
+                BASS_ChannelPlay(main_background, FALSE);
+            }
+            wmove(main_menu, 2*(3+1), 0);
+            wclrtoeol(main_menu);
+            box(main_menu, 0, 0);
+            wattron(main_menu, COLOR_PAIR(1));
+            mvwprintw(main_menu, 0,(2 * default_term_size.x / 3 - strlen(mesg[0])) / 2,"%s",mesg[0]);
+            wattroff(main_menu, COLOR_PAIR(1));
+            wattron(main_menu, A_STANDOUT);
+            mvwprintw(main_menu, 2*(3+1), (2 * default_term_size.x / 3 - strlen(mesg[3])) / 2, "%s", mesg[3]);
+            wattroff(main_menu, A_STANDOUT);
+            wrefresh(main_menu);
+        }
         else if(ch == '\n' && i == 4)
             _Exit(0);
     }
