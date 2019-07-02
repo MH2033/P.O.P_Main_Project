@@ -25,6 +25,7 @@ void cleanup(){
     struct opp_list *temp;
     while(head_op != NULL){
         temp = head_op -> next;
+        free(head_op->ops);
         free(head_op);
         head_op = temp;
     }

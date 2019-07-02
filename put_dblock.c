@@ -10,11 +10,11 @@ extern struct rpoint point;
 extern struct opponent opp;
 extern struct put dblock;
 extern char **game_map;
-extern struct dimension player_pos;
+extern struct need player_pos;
 
 void put_dblock(struct dimension player_last_pos){
     if(dblock.symbol && dblock.limit > 0){
-        if(player_last_pos.x == player_pos.x && player_last_pos.y == player_pos.y)
+        if(player_last_pos.x == player_pos.ops.x&& player_last_pos.y == player_pos.ops.y)
             ;//game_over();
         else {
             game_map[player_last_pos.y][player_last_pos.x] = dblock.symbol;

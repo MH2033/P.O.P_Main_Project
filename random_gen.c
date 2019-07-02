@@ -17,8 +17,8 @@ void random_gen(int n,char b){
     int core = time(NULL);
     srand(core+randomness);
     if (deathblock == b) {
-        ran_x = (rand() % (map_size.x - 2)) + 1;
         while (counter1<n) {
+            ran_x = (rand() % (map_size.x - 2)) + 1;
             if (game_map[1][ran_x] == ' ') {
                 game_map[1][ran_x] = b;
                 rain_x = ran_x;
