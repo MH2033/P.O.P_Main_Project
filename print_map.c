@@ -11,10 +11,10 @@ extern float t_limit;
 extern int time_limit;
 extern int global_counter;
 extern char character, deathblock, solidblock, wall;
-extern int c2,flagx_i,flagx_k,flagy_l,flagy_j;
 extern struct put dblock;
 extern WINDOW *game_window;
 void print_map(){
+    int z;
     register int i, j;
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -53,13 +53,20 @@ void print_map(){
             }
         }
     }
-    if (dblock.limit){
-        mvwprintw(game_window, map_size.y, 0, "remaining db: %d", dblock.limit);
+    wattron(game_window, COLOR_PAIR(2));
+    z = map_size.y;
+    if (dblock.symbol){
+        mvwprintw(game_window, z, 0, "Remaining Death blocks: %d", dblock.limit);
+        z++;
     }
-    if(point.symbol)
-        mvwprintw(game_window, map_size.y+1, 0, "Score: %d", score[0]);
-    if(time_limit)
-        mvwprintw(game_window, map_size.y+2, 0, "Remaining time: %0.2f", t_limit);
+    if(time_limit) {
+        mvwprintw(game_window, z, 0, "Remaining time: %.1f", t_limit);
+        z++;
+    }
+    if(point.symbol) {
+        mvwprintw(game_window, z, 0, "Score: %d", score[0]);
+    }
+    wattroff(game_window, COLOR_PAIR(2));
     wrefresh(game_window);
     refresh();
 }

@@ -8,7 +8,7 @@ extern WINDOW *game_window;
 void show_pause_window(){
     struct dimension win_size;
     static float volume;
-    static char mesg[4][10] = {"Paused", "Resume", "Mute", "Exit"};
+    static char mesg[4][10] = {"Paused", "Resume", "Mute", "Quit"};
     win_size.x = 2*map_size.x/3;
     win_size.y = map_size.y/3+1;
     WINDOW *pause_win = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);

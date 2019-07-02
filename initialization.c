@@ -36,8 +36,8 @@ void ingame_init(){
     cbreak();
     noecho();
     nodelay(stdscr, TRUE);
-    resize_term(map_size.y+2, map_size.x+1);
-    game_window = newwin(map_size.y+2, map_size.x+1, 0, 0);
+    resize_term(map_size.y+3, map_size.x+1);
+    game_window = newwin(map_size.y+3, map_size.x+1, 0, 0);
     randomness = time(0);
     if(point.symbol)
         random_gen(point.num, point.symbol);

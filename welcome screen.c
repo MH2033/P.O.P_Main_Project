@@ -5,15 +5,15 @@
 #include "core_functions/bass.h"
 #include "headers.h"
 extern WINDOW *game_menu;
-char list[100][100];
+char game_list[100][100];
 extern struct dimension default_term_size;
 extern HSTREAM main_background;
 int save_file_name_to_list(struct file_name *head, int counter){
     if (head == NULL){
-        strcpy(list[counter], "Back");
+        strcpy(game_list[counter], "Back");
         return counter;
     }
-    strcpy(list[counter], head->file);
+    strcpy(game_list[counter], head->file);
     counter++;
     save_file_name_to_list(head->next, counter);
 }
@@ -62,13 +62,13 @@ char* What_in_it(void){
             wattron(game_menu, A_STANDOUT);
         else
             wattroff(game_menu, A_STANDOUT);
-        mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(list[i]))/2, "%s",list[i]);
+        mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(game_list[i]))/2, "%s",game_list[i]);
     }
     wrefresh(game_menu);
     i = 1;
     while(1) {
         ch = getch();
-        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(list[i])) / 2, "%s", list[i]);
+        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(game_list[i])) / 2, "%s", game_list[i]);
         switch (ch) {
             case KEY_UP:
                 i--;
@@ -80,7 +80,7 @@ char* What_in_it(void){
                 break;
         }
         wattron(game_menu, A_STANDOUT);
-        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(list[i])) / 2, "%s", list[i]);
+        mvwprintw(game_menu, 2 * (i + 1), (2 * default_term_size.x / 3 - strlen(game_list[i])) / 2, "%s", game_list[i]);
         wattroff(game_menu, A_STANDOUT);
         wrefresh(game_menu);
         if(ch == '\n'){
@@ -102,7 +102,7 @@ char* What_in_it(void){
                         wattron(game_menu, A_STANDOUT);
                     else
                         wattroff(game_menu, A_STANDOUT);
-                    mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(list[i]))/2, "%s",list[i]);
+                    mvwprintw(game_menu, 2 * (i+1), (2*default_term_size.x/3-strlen(game_list[i]))/2, "%s",game_list[i]);
                 }
                 wrefresh(game_menu);
                 i = 1;
