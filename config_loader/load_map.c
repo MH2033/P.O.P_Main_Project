@@ -25,8 +25,12 @@ int load_map(FILE *map_file){
     while((c = getc(map_file)) != EOF){
         if(c == opp.rival){
             temp = (struct opp_list *)malloc(sizeof(struct opp_list));
-            temp -> pos.y = i;
-            temp -> pos.x = j;
+            temp -> ops.ops.y = i;
+            temp -> ops.ops.x = j;
+            temp->ops.opp_s.flagx_i = 0;
+            temp->ops.opp_s.flagy_l = 0;
+            temp->ops.opp_s.flagy_j = 0;
+            temp->ops.opp_s.flagx_k = 0;
             temp -> next = head_op;
             head_op = temp;
             global_counter++;

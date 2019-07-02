@@ -13,28 +13,28 @@ void *move_computer(void *op){
         flag_last = left;
     else if (flagy_j == 1)
         flag_last == right;
-    if (FindCloseFood(*(struct dimension *)op) == up) {
+    if (FindCloseFood(*(struct need *)op) == up) {
         move_up(op, opp.rival, score, 1);
         flagx_k = 1;
         flagy_j = 0;
         flagy_l = 0;
         flagx_i = 0;
     }
-    else if (FindCloseFood(*(struct dimension *)op) == down) {
+    else if (FindCloseFood(*(struct need *)op) == down) {
         move_down(op, opp.rival, score, 1);
         flagx_k = 0;
         flagy_j = 0;
         flagy_l = 0;
         flagx_i = 1;
     }
-    else if (FindCloseFood(*(struct dimension *)op) == left) {
+    else if (FindCloseFood(*(struct need *)op) == left) {
         move_left(op, opp.rival, score, 1);
         flagx_k = 0;
         flagy_j = 0;
         flagy_l = 1;
         flagx_i = 0;
     }
-    else if (FindCloseFood(*(struct dimension *)op) == right) {
+    else if (FindCloseFood(*(struct need *)op) == right) {
         move_right(op, opp.rival, score, 1);
         flagx_k = 0;
         flagy_j = 1;
