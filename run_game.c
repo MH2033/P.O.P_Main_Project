@@ -1,9 +1,9 @@
 #include <pthread.h>
-#include <curses.h>
+#include <Headers/curses.h>
 #include <string.h>
 #include <dirent.h>
-#include "core_functions/bass.h"
-#include "headers.h"
+#include "Headers/bass.h"
+#include "Headers/project_header.h"
 int score[2];
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;

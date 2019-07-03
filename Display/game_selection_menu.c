@@ -1,9 +1,9 @@
-#include <curses.h>
+#include <Headers/curses.h>
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "core_functions/bass.h"
-#include "headers.h"
+#include "Headers/bass.h"
+#include "Headers/project_header.h"
 extern WINDOW *game_menu;
 char game_list[100][100];
 extern struct dimension default_term_size;
@@ -38,9 +38,8 @@ char * findpass(struct file_name * head, int number){
 char* What_in_it(void){
     int counter;
     char mesg[15] = "Select a game";
-    int ch, i = 1;
+    int ch, i;
     int id;
-    char * name_file = (char *)malloc(sizeof(char)*100);
     struct dirent * dn;
     int count = 0;
     struct file_name* head = NULL;

@@ -1,6 +1,6 @@
-#include <curses.h>
-#include "core_functions/bass.h"
-#include "headers.h"
+#include <Headers/curses.h>
+#include "Headers/bass.h"
+#include "Headers/project_header.h"
 extern struct dimension map_size;
 extern WINDOW *game_window;
 extern HSTREAM background_music;

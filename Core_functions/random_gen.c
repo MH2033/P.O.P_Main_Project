@@ -2,13 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 extern char deathblock;
 extern int randomness;
 struct dimension map_size;
 extern char **game_map;
 extern int rain_x,rain_y;
-unsigned short lfsr = 0xACE1u;
 unsigned bit;
 void random_gen(int n,char b){
     int flag = 0;

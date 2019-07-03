@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "Headers/project_header.h"
 struct dimension pos;
 extern char **game_map;
 extern char solidblock, deathblock, moveblock, wall, object;
@@ -8,7 +8,6 @@ int A_I(int i,int j, struct need * opps){
     int mx, my,c2;
     int x_p_y = opps->ops.y;
     int  x_p_x = opps->ops.x;
-    debug_output(opps->opp_s.flagx_i,opps->opp_s.flagx_k,opps->opp_s.flagy_l,opps->opp_s.flagy_j,opp.dest);
     if (((mx = i - x_p_y) < 0)&&(opps->opp_s.flagx_k ==0) && (game_map[x_p_y-1][x_p_x] == ' ' || game_map[x_p_y-1][x_p_x] == opp.dest)) {
         c2 = up;
         opps->opp_s.flagx_k = 1;

@@ -1,8 +1,8 @@
-#include <curses.h>
+#include <Headers/curses.h>
 #include <string.h>
 #include <stdlib.h>
-#include "core_functions/bass.h"
-#include "headers.h"
+#include "Headers/bass.h"
+#include "Headers/project_header.h"
 extern struct dimension default_term_size;
 WINDOW *game_menu;
 HSTREAM main_background;

@@ -1,8 +1,8 @@
 #include <conio.h>
-#include <curses.h>
+#include <Headers/curses.h>
 #include <pthread.h>
-#include "headers.h"
-#include "core_functions/bass.h"
+#include "Headers/project_header.h"
+#include "Headers/bass.h"
 extern int c, move_key;
 extern char up, down, left, right, character, Exit;
 extern WINDOW *game_window;

@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "Headers/project_header.h"
 extern struct rpoint point;
 extern int score[2];
 void save_score(void){

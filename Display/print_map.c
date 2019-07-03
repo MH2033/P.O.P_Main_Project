@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
+#include <Headers/curses.h>
 #include <string.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 extern int score[];
 struct rpoint point;
 struct opponent opp;

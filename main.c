@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <curses.h>
+#include <Headers/curses.h>
 #include <unistd.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 extern struct dimension default_term_size;
 int main(int argc, char *argv[]) {
     int c;

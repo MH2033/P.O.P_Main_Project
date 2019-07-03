@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;

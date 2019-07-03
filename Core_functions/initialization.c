@@ -1,7 +1,7 @@
 #include <time.h>
-#include <curses.h>
-#include "headers.h"
-#include "core_functions/bass.h"
+#include <Headers/curses.h>
+#include "Headers/project_header.h"
+#include "Headers/bass.h"
 
 extern char solidblock, deathblock, moveblock, wall, target, object;
 extern char up, down, left, right, character, Exit;

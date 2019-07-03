@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 #define NUM_CONFIGS 18
 
 extern char solidblock, deathblock, moveblock, wall, target, object;

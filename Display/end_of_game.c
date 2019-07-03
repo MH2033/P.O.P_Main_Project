@@ -1,7 +1,7 @@
-#include "headers.h"
+#include "Headers/project_header.h"
 #include <windows.h>
-#include <curses.h>
-#include "core_functions/bass.h"
+#include <Headers/curses.h>
+#include "Headers/bass.h"
 extern struct rpoint point;
 extern int global_counter;
 extern int score[];

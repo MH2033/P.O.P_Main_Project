@@ -1,6 +1,6 @@
-#include <curses.h>
-#include "core_functions/bass.h"
-#include "headers.h"
+#include <Headers/curses.h>
+#include "Headers/bass.h"
+#include "Headers/project_header.h"
 extern int c;
 extern char Exit;
 extern struct dimension map_size;

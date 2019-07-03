@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "Headers/project_header.h"
 
 extern char up, down, left, right, character, Exit;
 extern struct need player_pos;

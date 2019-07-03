@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "Headers/project_header.h"
 extern char up,down,left,right;
 extern struct opponent opp;
 extern int score[2];

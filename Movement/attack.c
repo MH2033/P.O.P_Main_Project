@@ -1,6 +1,6 @@
-#include <curses.h>
-#include "headers.h"
-#include "core_functions/bass.h"
+#include <Headers/curses.h>
+#include "Headers/project_header.h"
+#include "Headers/bass.h"
 
 extern char **game_map;
 extern struct need player_pos;

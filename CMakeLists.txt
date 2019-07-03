@@ -3,29 +3,28 @@ project(P_O_P_Main_Project C)
 
 set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_C_FLAGS "-pthread -lpdcurses")
+set(CMAKE_C_FLAGS "-pthread -O3")
 include_directories(.)
 
 add_executable(P_O_P_Main_Project
-        config_loader/load_configs.c
-        config_loader/load_map.c
-        config_loader/load_settings.c
-        core_functions/cd.c
-        core_functions/delay.c
-        movement/move_player.c
-        movement/player_movement.c
-        headers.h
-        initialization.c
+        Config_loader/load_configs.c
+        Config_loader/load_map.c
+        Config_loader/load_settings.c
+        Core_functions/cd.c
+        Core_functions/delay.c
+        Movement/move_player.c
+        Movement/player_movement.c
+        Headers/project_header.h
+        Core_functions/initialization.c
         main.c
-        print_map.c
-        put_dblock.c
-        random_gen.c
+        Display/print_map.c
+        Movement/put_dblock.c
+        Core_functions/random_gen.c
         run_game.c
-        "welcome screen.c" movement/move_comp.c
-        FindCloseFood.c end_of_game.c A_I.c show_start_window.c show_pause_window.c
-        raindeath.c
-        debug.c
-        core_functions/cleanup.c attack.c keyboard_handle.c main_menu.c save.config.c "read save.c" queue.c)
+        "Display/game_selection_menu.c" Movement/move_comp.c
+        A.I/FindCloseFood.c Display/end_of_game.c A.I/A_I.c Display/start_window.c Display/pause_window.c
+        Display/raindeath.c
+        Core_functions/cleanup.c Movement/attack.c Movement/keyboard_handle.c Display/main_menu.c Core_functions/save_score.c "Core_functions/read_score.c")
 
-target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/pdcurses.a)
-target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/bass.lib)
+target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/Libraries/pdcurses.a)
+target_link_libraries(P_O_P_Main_Project ${CMAKE_SOURCE_DIR}/Libraries/bass.lib)

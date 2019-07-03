@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers.h"
+#include "Headers/project_header.h"
 int global_counter = 0;
 extern char character;
 char **game_map;
