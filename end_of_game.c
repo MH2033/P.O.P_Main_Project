@@ -1,6 +1,7 @@
 #include "headers.h"
 #include <windows.h>
 #include <curses.h>
+#include "core_functions/bass.h"
 extern struct rpoint point;
 extern int global_counter;
 extern int score[];
@@ -12,11 +13,13 @@ extern WINDOW *game_window;
 void game_over(void){
     int i = 1, ch;
     WINDOW *game_over_window;
+    HSTREAM game_over = BASS_StreamCreateFile(FALSE, "game_over.mp3", 0, 0, 0);
     struct dimension win_size;
     char temp[100];
     char mesg[] = "Game Over!";
     win_size.x = 2*map_size.x/3;
     win_size.y = map_size.y/3+1;
+    BASS_ChannelPlay(game_over, FALSE);
     game_over_window = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
     keypad(game_over_window, TRUE );
     box(game_over_window, 0, 0);
@@ -33,12 +36,16 @@ void game_over(void){
     wattroff(game_over_window, A_STANDOUT);
     wrefresh(game_over_window);
     while(getch()!= '\n');
+    BASS_ChannelStop(game_over);
+    BASS_StreamFree(game_over);
     delwin(game_over_window);
 }
 void win(void){
     WINDOW *win_window;
+    HSTREAM win = BASS_StreamCreateFile(FALSE, "win.mp3", 0, 0, 0);
     struct dimension win_size;
     char mesg[] = "Winner Winner Chicken Dinner!";
+    BASS_ChannelPlay(win, FALSE);
     win_size.x = 2*map_size.x/3;
     win_size.y = map_size.y/3+1;
     win_window = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
@@ -52,13 +59,17 @@ void win(void){
     wattroff(win_window, A_STANDOUT);
     wrefresh(win_window);
     while(getch()!= '\n');
+    BASS_ChannelStop(win);
+    BASS_StreamFree(win);
     delwin(win_window);
 }
 
 void time_limit_reached(){
     WINDOW *time_window;
+    HSTREAM time_limit = BASS_StreamCreateFile(FALSE, "time_limit.mp3", 0, 0, 0);
     struct dimension win_size;
     char mesg[] = "Time Limit Reached!";
+    BASS_ChannelPlay(time_limit, FALSE);
     win_size.x = 2*map_size.x/3;
     win_size.y = map_size.y/3+1;
     time_window = newwin(win_size.y, win_size.x ,map_size.y/3, map_size.x/5 - 1);
@@ -72,5 +83,7 @@ void time_limit_reached(){
     wattroff(time_window, A_STANDOUT);
     wrefresh(time_window);
     while(getch()!= '\n');
+    BASS_ChannelStop(time_limit);
+    BASS_StreamFree(time_limit);
     delwin(time_window);
 }
