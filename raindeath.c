@@ -42,7 +42,7 @@ raindbd *move_rain(raindbd * head){
     else{
         int x = head->head.x;
         int y = head->head.y;
-        if ((game_map[y + 1][x] == ' ' || game_map[y + 1][x] == object) && game_map[y][x] == deathblock) {
+        if (game_map[y + 1][x] == ' ' && game_map[y][x] == deathblock) {
             game_map[y + 1][x] = game_map[y][x];
             game_map[y][x] = ' ';
             head->head.y++;
